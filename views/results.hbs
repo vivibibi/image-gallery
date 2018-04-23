@@ -1,0 +1,31 @@
+<!--Used in results.json -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='utf-8'>
+	<title>{{title}}</title>
+	<link href="style.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body id="bodyResults"> 
+    <a id='mainBut' href="/" class="button">Main Page</a>
+
+	<form method="GET" action="/gallery" id="formSave">
+        <input type="text" id="title" name="title" placeholder="Insert a title" />
+        <input name="save" id="save" value="save" type="submit"/>
+    </form>
+
+    <div id="pictDiv">
+    	{{pictures}}
+    </div>
+
+</body>
+<script>
+
+</script>
+
+
+</html>
