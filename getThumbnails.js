@@ -45,6 +45,7 @@ getThumbnails((errorMessage, results) => {
         console.log(errorMessage);
     } else {
         return piclist;
+	console.log('test');
     }
 });
 **/
