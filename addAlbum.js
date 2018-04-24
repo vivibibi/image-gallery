@@ -5,6 +5,13 @@ var album = {
     imgs: 'imgs',
 };
 
+/**
+ * Adds a group of images to the album page and gives it a title.
+ * @param {string} title - Album's title
+ * @param {list} imgs - List of image URLS
+ * @requires fs
+ */
+
 module.exports.addAlbum = (title, imgs) => {
     console.log('Adding album');
 
