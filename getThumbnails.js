@@ -38,23 +38,9 @@ module.exports.getThumbnails = function(query, callback) {
             }
             
         } else {callback('No images found');}
-
+  
     });
+  return piclist
 };
 
-<<<<<<< HEAD
-=======
 
-
-// key BScfR482T
-/**
-getThumbnails((errorMessage, results) => {
-    if (errorMessage) {
-        console.log(errorMessage);
-    } else {
-        return piclist;
-	console.log('test');
-    }
-});
-**/
->>>>>>> 30f67e2b4fc5a73c914ffd11426d248c3f52c542
