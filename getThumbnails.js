@@ -1,7 +1,13 @@
 const request = require('request');
-var piclist = [];
 
-// function that retrieves thumbnails from a search query
+
+/**
+ * Retrieves thumbnails from a search query
+ * @param {string} query - The query sent to the API
+ * @requires request
+ * @returns {list} piclist -  A list of HTML strings containing the image result's URLS.
+ */
+
 module.exports.getThumbnails = function(query, callback) {
     request({
         url: 'https://www.europeana.eu/api/v2/search.json?wskey=BScfR482T&query=' + encodeURIComponent(query),
@@ -32,20 +38,9 @@ module.exports.getThumbnails = function(query, callback) {
             }
             
         } else {callback('No images found');}
-
+  
     });
-    return piclist
+  return piclist
 };
 
 
-///
-// key BScfR482T
-/**
-getThumbnails((errorMessage, results) => {
-    if (errorMessage) {
-        console.log(errorMessage);
-    } else {
-        return piclist;
-    }
-});
-**/
