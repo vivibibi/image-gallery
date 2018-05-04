@@ -50,7 +50,7 @@ app.get('/results', (request, response) => {
      */
     getThumbs.getThumbnails(nquery, (errorMessage, results) => {
         /** 
-         * if there's no pictures returned an error message will be displayed
+         * if there's no pictures returned, an error message will be displayed
          */
         if (results == undefined) {
             console.log(errorMessage);
@@ -65,7 +65,6 @@ app.get('/results', (request, response) => {
 
             for (i = 0; i < results.length; i++) {
                listofimgs.push(results[i]);
-               //console.log(results[i]);
                galThumbs += '<img class=thumbnails src=' + results[i] + '>';
                formatThumbs += '<img class=thumbnails src=' + results[i] + '><form id=favForm method=GET action=/favorite>'+
                '<button name=favorite id=favorite value=' + i + '' + ' type=submit>❤</button></form>';
@@ -94,12 +93,16 @@ app.get('/results', (request, response) => {
 
 app.get('/gallery', (request, response) => {
   /** 
-   * if there's 
+   * if user enters title and clicks the "save" button, an album will be added to gallery
    */
 
   if (request.query.title != undefined){
     addAlbum.addAlbum(request.query.title, galThumbs);
   }
+  /** 
+   * if there's no albums returned, an error message will be displayed
+   */
+
     try {
       var readalbum = fs.readFileSync('album.json');
       var piclist = JSON.parse(readalbum);
@@ -120,12 +123,21 @@ app.get('/gallery', (request, response) => {
 });
 
 
-//favorite page//
+/** 
+ * Routes the /favorite path
+ */
+
 app.get('/favorite', (request, response) => {
 
+/** 
+   * if user clicks the "favorite" button, the image will be added to favorite
+   */
   if (request.query.favorite != undefined){
     favPic.favPic(listofimgs[request.query.favorite]);
 
+/** 
+   * if there's no favorite images returned, an error message will be displayed
+   */
   } try {
     var readimgs = fs.readFileSync('imgs.json');
     var favlist = JSON.parse(readimgs);
@@ -149,7 +161,9 @@ app.get('/favorite', (request, response) => {
 //saving/pushing favorite pictures//
 
 
-
+/** 
+   * push the server up on the port
+   */
 app.listen(port, () => {
     console.log(`Server is up on the port ${port}`);
 
