@@ -1,21 +1,25 @@
+// SoViDe
+
 const express = require('express');
 const request = require('request');
-const fs = require('fs');
-const hbs = require('hbs');
-const port = process.env.PORT || 8080;
-
-const addAlbum = require('./addAlbum.js');
 const getThumbs = require('./getThumbnails.js');
-const favPic = require('./facPic.js');
+const favPic = require('./favPic.js');
+const fs = require('fs');
+const addAlbum = require('./addAlbum.js');
 
-
+const hbs = require('hbs');
 var thumbs = [],
     nquery = '';
-
+const port = process.env.PORT || 8080;
 
 var app = express();
 
+var album = {
+    title: 'title',
+    imgs: 'imgs',
+};
 
+//album//
 
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -23,41 +27,21 @@ app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
 
-/**
- * Routes the / (root) path
- */
-
+// show the search box
 app.get('/', (request, response) => {
-    /**
-    * Displays the main page
-    */
     response.render('search.hbs')
 });
 
 
-/**
- * Routes the /results path
- */
-
+// show the result of the search
 app.get('/results', (request, response) => {
-    /**
-     * Grabs the query from the GET response
-     */
     nquery = response.req.query.query;
-
-    /** 
-     * get picture links from the query
-     */
+    // get picture links from the query
     getThumbs.getThumbnails(nquery, (errorMessage, results) => {
-        /** 
-         * if there's no pictures returned an error message will be displayed
-         */
+
         if (results == undefined) {
             console.log(errorMessage);
             response.send('<h1>' + errorMessage + '</h1>');
-        /** 
-         * else the URLs will be encapsulated in HTML code and written to a JSON file
-         */
         } else {
             global.formatThumbs = '<br>';
             global.listofimgs = [];
@@ -72,30 +56,20 @@ app.get('/results', (request, response) => {
             }
 
             var readresults = fs.readFileSync('results.json');
-
-            /** 
-             * the JSON file is split into parts because we weren't able to use app.render properly
-             */
             var total = JSON.parse(readresults);
             var part1 = total.part1;
             var part2 = total.part2;
 
-            /** 
-             * the HTML code is sent to be displayed
-             */
+              // display the thumbnails on the website
+
             response.send(part1 + part2 + formatThumbs);
           }
     });
 });
 
-/** 
- * Routes the /gallery path
- */
 
+//gallery page//
 app.get('/gallery', (request, response) => {
-  /** 
-   * if there's 
-   */
 
   if (request.query.title != undefined){
     addAlbum.addAlbum(request.query.title, galThumbs);
@@ -105,7 +79,7 @@ app.get('/gallery', (request, response) => {
       var piclist = JSON.parse(readalbum);
       var gallery_val = '';
       for (var i=0; i<piclist.length; i++){
-          gallery_val += '<div id=galDiv <br> <b>' + piclist[i].title +'</b><br><div id=galDivPic <img id=galDivPic src='+ piclist[i].imgs + ' </div> </div>';
+          gallery_val += '<div id=galDiv <br> <b>' + piclist[i].title +'</b><br><div id=galDivPic <img src='+ piclist[i].imgs + ' </div> </div>';
       }
 
       var readgallery = fs.readFileSync('gallery.json');
@@ -125,7 +99,7 @@ app.get('/favorite', (request, response) => {
 
   if (request.query.favorite != undefined){
     favPic.favPic(listofimgs[request.query.favorite]);
-
+     console.log(listofimgs[request.query.favorite]);
   } try {
     var readimgs = fs.readFileSync('imgs.json');
     var favlist = JSON.parse(readimgs);
