@@ -23,5 +23,5 @@ module.exports.favPic = (imgs) => {
    };
    
    fs.writeFileSync('imgs.json', JSON.stringify(photolist));
-   
+   return photolist
 };

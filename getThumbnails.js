@@ -9,8 +9,9 @@ const request = require('request');
  */
 
 module.exports.getThumbnails = function(query, callback) {
+    return nPromise = new Promise((resolve, error) => {
     request({
-        url: 'https://www.europeana.eu/api/v2/search.json?wskey=BScfR482T&query=' + encodeURIComponent(query),
+        url: 'https://www.europeana.eu/api/v2/search.json?wskey=BScfR482T&query=' + encodeURIComponent(query.toLowerCase()),
         json: true
     }, (error, response, body) => {
         if (error) {
@@ -38,9 +39,9 @@ module.exports.getThumbnails = function(query, callback) {
             }
             
         } else {callback('No images found');}
-  
+        
     });
-  return piclist
+  })
 };
 
 
