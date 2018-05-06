@@ -1,3 +1,4 @@
+
 const request = require('request');
 
 
@@ -9,11 +10,11 @@ const request = require('request');
  */
 
 module.exports.getThumbnails = function(query, callback) {
-    return nPromise = new Promise((resolve, error) => {
     request({
-        url: 'https://www.europeana.eu/api/v2/search.json?wskey=BScfR482T&query=' + encodeURIComponent(query.toLowerCase()),
+        url: 'https://www.europeana.eu/api/v2/search.json?wskey=BScfR482T&query=' + encodeURIComponent(query),
         json: true
     }, (error, response, body) => {
+        var piclist = [];
         if (error) {
             console.log(error)
             callback("can't connect to europeana api");
@@ -24,7 +25,6 @@ module.exports.getThumbnails = function(query, callback) {
             callback("Application has reached its usage limit");
 
         } else if (response.statusCode == 200) {
-            var piclist = [];
             for (i = 0; i < body.items.length; i++) {
                 try {
                     piclist.push(body.items[i].edmPreview[0])
@@ -39,9 +39,7 @@ module.exports.getThumbnails = function(query, callback) {
             }
             
         } else {callback('No images found');}
-        
+  
     });
-  })
+  
 };
-
-
