@@ -6,7 +6,7 @@ const port = process.env.PORT || 8080;
 
 const addAlbum = require('./addAlbum.js');
 const getThumbs = require('./getThumbnails.js');
-const favPic = require('./facPic.js');
+const favPic = require('./favPic.js');
 const displayRe = require('./displayResults.js')
 const displayGal = require('./displayGal.js')
 const displayFav = require('./displayFav.js')
