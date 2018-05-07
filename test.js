@@ -4,7 +4,7 @@ var validateGetThumbnails = require("./getThumbnails")
 
 describe("testing", () => {
 	test("a valid album", () => {
-		expect(validateAddAlbum.addAlbum(["title","url"])).toBeDefined()
+		expect(validateAddAlbum.addAlbum(["title", "url"])).toBeDefined()
 	});
 });
 
