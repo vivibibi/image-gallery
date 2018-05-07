@@ -81,4 +81,3 @@ describe("testing displayResults.js", () => {
         }, 4000);
 		
 	})
-})

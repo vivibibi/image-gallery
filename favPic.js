@@ -1,5 +1,11 @@
 const fs = require('fs');
 
+/**
+ * Saves a single image when you click on the favorite button to the favorites album (imgs.json)
+ * @param {string} imgs - The URL of an image
+ * @requires fs
+ */
+
 module.exports.favPic = (imgs) => {
    console.log('Favorite picture');
 

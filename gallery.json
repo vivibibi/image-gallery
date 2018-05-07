@@ -1,1 +1,2 @@
+
 {"gal1":"<!DOCTYPE html><html><head><meta charset='utf-8'><title>Gallery</title><link href='style.css' rel='stylesheet' type='text/css'/></head><body id='galBody'><a id='mainBut' href='/' class='button'>Main Page</a></body><script var butMain = document.getElementById('mainBut')butMain.addEventListener('mouseover', function() {butMain.style.background='rgba(0,0,0,0.7)';})butMain.addEventListener('mouseleave', function() {butMain.style.background='rgba(0,0,0,0.5)';})></script></html>"}

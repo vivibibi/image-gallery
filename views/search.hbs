@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -26,10 +27,11 @@
 
     <form action="action_page.php">
         <div id="loginbox">
-        	<h3>plz login</h3>
-            <input class="loginInput" type="text" placeholder="Username" name="uname" required>
-            <input class="loginInput" type="password" placeholder="Password" name="pswd" required>
+            <button type="button" class="cancelBut" onclick="document.getElementById('loginbox').style.display='none'">X</button>
+            <input class="nameInput" type="text" placeholder="Username" name="uname" required>
+            <input class="pswdInput" type="password" placeholder="Password" name="pswd" required>
             <button class="loginBut" type="submit">Login</button>
+
         </div>
 
 </body>
