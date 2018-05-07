@@ -37,7 +37,7 @@ describe("testing fav", () => {
     });
 });
 
-describe.skip("testing api", () => {
+describe("testing api", () => {
     test("a valid search", () => {
         setTimeout(function() {
             expect(gt1).toBeDefined();
@@ -72,7 +72,7 @@ describe("testing displayGal.js", () => {
 	})
 })
 
-describe.only("testing displayResults.js", () => {
+describe("testing displayResults.js", () => {
 	test("combines the page's HTML with the albums' HTML", () => {
 		setTimeout(function() {
             expect(gt3).toContain("Europeana Gallery: Results");
