@@ -38,7 +38,7 @@ module.exports.getThumbnails = function(query, callback) {
 };
 
 
-
+///
 // key BScfR482T
 /**
 getThumbnails((errorMessage, results) => {

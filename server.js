@@ -26,7 +26,6 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
-
 // show the search box
 app.get('/', (request, response) => {
     response.render('search.hbs')
