@@ -4,7 +4,6 @@ const fs = require('fs');
  * inserts all the favorited images into HTML code
  */
 
-
 module.exports.loadImgs = function() {
 
     var readimgs = fs.readFileSync('imgs.json');

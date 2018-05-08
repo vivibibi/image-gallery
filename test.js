@@ -37,7 +37,7 @@ describe("testing fav", () => {
     });
 });
 
-describe.skip("testing api", () => {
+describe("testing api", () => {
     test("a valid search", () => {
         setTimeout(function() {
             expect(gt1).toBeDefined();
@@ -54,11 +54,6 @@ describe("testing loadImgs.js", () => {
 	})
 })
 
-describe("testing displayFav.js", () => {
-	test("adds the html of the favorite page to the actual list of favorited imgs", () => {
-		expect(validateDisplayFav.displayFav()).toContain('Main Page');
-	})
-})
 
 describe("testing loadGal.js", () => {
 	test("adds html to the raw links of the albums", () => {
@@ -66,13 +61,49 @@ describe("testing loadGal.js", () => {
 	})
 })
 
-describe("testing displayGal.js", () => {
-	test("combines the page's HTML with the albums' HTML", () => {
-		expect(validateDisplayGal.displayGal()).toContain("rel='stylesheet'");
-	})
-})
 
-describe.only("testing displayResults.js", () => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+describe("testing displayResults.js", () => {
 	test("combines the page's HTML with the albums' HTML", () => {
 		setTimeout(function() {
             expect(gt3).toContain("Europeana Gallery: Results");
@@ -80,5 +111,19 @@ describe.only("testing displayResults.js", () => {
 
         }, 4000);
 		
+	})
+})
+
+
+describe("testing displayFav.js", () => {
+	test("adds the html of the favorite page to the actual list of favorited imgs", () => {
+		expect(validateDisplayFav.displayFav()).toContain('Main Page');
+	})
+})
+
+
+describe("testing displayGal.js", () => {
+	test("combines the page's HTML with the albums' HTML", () => {
+		expect(validateDisplayGal.displayGal()).toContain("rel='stylesheet'");
 	})
 })
