@@ -2,35 +2,40 @@
 <html>
 
 <head>
-	<meta charset='utf-8'>
-	<title>{{title}}</title>
-	<link href="style.css" rel="stylesheet" type="text/css"/>
+    <meta charset='utf-8'>
+    <title>{{title}}</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body id="body">
-	<div id="searchdiv">
-		<h1 id ="head">Europeana Gallery</h1>
-		
-		<form id ="form" action="/results" method="GET">
-			<input id="searchText" type="text" name="query" placeholder="Search"/>
-    		<input class="button" id="subBut" type="submit" value="Submit">
-		</form>
+    <div id="searchdiv">
+        <h1 id="head">Europeana Gallery</h1>
+        <form id="form" action="/results" method="GET">
+            <input id="searchText" type="text" name="query" placeholder="Search" />
+            <input class="button" id="subBut" type="submit" value="Submit">
+        </form>
+        <form action="/gallery" method="GET">
+            <input class="button" id="galBut" type="submit" value="Gallery" />
+        </form>
+        <form action="/favorite" method="GET">
+            <input class="button" id="favBut" type="submit" value="Favorite" />
+        </form>
+    </div>
 
-		<form action="/gallery" method="GET">
-			<input class="button" id="galBut" type="submit" value="Gallery"/>
-		</form>
+    <button class="button" id="logBut"onclick="document.getElementById('loginbox').style.display='block'">Login</button>
 
-		<form action="/favorite" method="GET">
-			<input class="button" id="favBut" type="submit" value="Favorite"/>
-		</form>
-
-	</div>
+    <form action="action_page.php">
+        <div id="loginbox">
+        	<h3>plz login</h3>
+            <input class="loginInput" type="text" placeholder="Username" name="uname" required>
+            <input class="loginInput" type="password" placeholder="Password" name="pswd" required>
+            <button class="loginBut" type="submit">Login</button>
+        </div>
 
 </body>
-	
-	<script>
-		
-	</script>
+
+<script>
+
+</script>
+
 </html>
-
-

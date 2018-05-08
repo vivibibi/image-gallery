@@ -26,4 +26,5 @@ module.exports.addAlbum = (title, imgs) => {
     };
     
     fs.writeFileSync('album.json', JSON.stringify(imglist));
+    return imglist
 };
