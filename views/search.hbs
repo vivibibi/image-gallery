@@ -1,36 +1,50 @@
+
 <!DOCTYPE html>
 <html>
 
 <head>
 	<meta charset='utf-8'>
 	<title>{{title}}</title>
-	<link href="style.css" rel="stylesheet" type="text/css"/>
+	<link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body id="body">
 	<div id="searchdiv">
-		<h1 id ="head">Europeana Gallery</h1>
-		
-		<form id ="form" action="/results" method="GET">
-			<input id="searchText" type="text" name="query" placeholder="Search"/>
-    		<input class="button" id="subBut" type="submit" value="Submit">
+		<h1 id="head">Europeana Gallery</h1>
+		<form id="form" action="/results" method="GET">
+			<input id="searchText" type="text" name="query" placeholder="Search" />
+			<input class="button" id="subBut" type="submit" value="Submit">
 		</form>
-
 		<form action="/gallery" method="GET">
-			<input class="button" id="galBut" type="submit" value="Gallery"/>
+			<input class="button" id="galBut" type="submit" value="Gallery" />
 		</form>
-
 		<form action="/favorite" method="GET">
-			<input class="button" id="favBut" type="submit" value="Favorite"/>
+			<input class="button" id="favBut" type="submit" value="Favorite" />
 		</form>
-
 	</div>
 
+	<button class="button" id="logBut" onclick="document.getElementById('loginbox').style.display='block'">Login</button>
+
+	<form action="action_page.php">
+		<div id="loginbox">
+			<h3>Please Login</h3>
+			<input class="loginInput" type="text" placeholder="Username" name="uname" required>
+			<input class="loginInput" type="password" placeholder="Password" name="pswd" required>
+			<button class="loginBut" type="submit">Login</button>
+			<a id="noAccount" class="createAccLinks" onclick="document.getElementById('createAcc').style.display='block'; document.getElementById('loginbox').style.display='none'">Don't have an account? Sign up here!</a>
+		</div>
+		<div id="createAcc">
+			<input class="loginInput" type="text" placeholder="Username" name="uname" required>
+			<input class="loginInput" type="password" placeholder="Password" name="pswd" required>
+			<input class="loginInput" type="password" placeholder="Confirm Password" name="pswd" required>
+			<button class="loginBut" type="submit">Create Account</button>
+			<a id="haveAcc" class="createAccLinks" onclick="document.getElementById('loginbox').style.display='block'; document.getElementById('createAcc').style.display='none'">Already have an account? Log-in now!</a>
+		</div>
+
 </body>
-	
-	<script>
-		
-	</script>
+
+<script>
+
+</script>
+
 </html>
-
-
