@@ -1,0 +1,17 @@
+create table users(
+	userName varchar(20) primary key,
+	password varchar(20)
+)
+
+create table images(
+	imgLink varchar(500) primary key,
+	userName varchar(20) foreign key references users(userName),
+	type int
+)
+
+create table gallery(
+	gal_id int identity primary key,
+	userName varchar(20) foreign key references users(userName),
+	imgLink varchar(50000) foreign key references images(imgLink),
+	title varchar(50)
+)

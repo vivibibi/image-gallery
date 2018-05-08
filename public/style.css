@@ -35,297 +35,10 @@ h1 {
     right: 0px;
     margin: auto;
     transition: 0.5s;
-}
-#logBut {
-	float: right;
+	text-align: center;
 }
 
-.nameInput {
-    width: 300px;
-    height: 15px;
-    left: 10px;
-    padding: 15px;
-    margin: 50px 10px 0px 30px;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-   
-}
-
-.pswdInput {
-    width: 300px;
-    height: 15px;
-    left: 10px;
-    padding: 15px;
-    margin: 15px 10px 0px 30px;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-}
-
-
-.loginBut {
-    background-color: gray;
-    color: white;
-    padding: 14px 20px;
-    margin: 28px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    transition: 0.5s;
-}
-.loginBut:hover {
-	background-color: rgba(0, 0, 0, 0.9);
-}
-
-.cancelBut {
-    position: absolute;
-    float: right;
-    left:350px;
-    width: auto;
-    padding: 10px 18px;
-}
-
-
-/*search box*/
-#form {
-    position: absolute;
-    top: 30px;
-    left: 0px;
-    right: 0px;
-    margin: auto;
-    width: 304px;
-    height: 100px;
-}
-
-#searchdiv {
-    position: absolute;
-    background-color: rgba(50, 50, 50, 0.5);
-    border: 5px double white;
-    width: 600px;
-    height: 150px;
-    margin: auto;
-    top: 100px;
-    bottom: 0;
-    right: 0;
-    left: 0;
-}
-
-#subBut {
-    position: absolute;
-    top: 50px;
-    left: 100px;
-}
-
-#galBut {
-    position: absolute;
-    top: 180px;
-    left: 150px;
-    padding: 5px;
-}
-
-#favBut {
-    position: absolute;
-    top: 180px;
-    right: 150px;
-    padding: 5px;
-}
-
-#body {
-    background-image: url('bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-#searchText {
-    width: 300px;
-    font-size: 24px;
-}
-
-.button:hover {
-    background: rgba(0, 0, 0, 0.7);
-}
-
-
-/*results.hbs*/
-
-body {
-    height: 100%;
-    background-image: url('pa.jpg');
-    background-size: 1400px;
-    background-attachment: fixed;
-}
-
-#formSave {
-    position: absolute;
-    width: 250px;
-    top: 70px;
-}
-
-#divv {
-    position: absolute;
-    width: 100%;
-    height: 80%;
-    left: 0;
-    right: 0;
-    top: 50;
-    bottom: 0;
-    overflow-y: scroll;
-    border-top: 3px double white;
-}
-
-
-#save {
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    color: white;
-    border: 2.5px solid white;
-    padding: 3px;
-
-    position: absolute;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.5);
-    transition: 0.5s;
-    left: 230px;
-}
-
-#title {
-    font-size: 18px;
-}
-
-#mainBut {
-    text-decoration: none;
-    font-family: sans-serif;
-    position: fixed;
-}
-
-#favorite {
-    float: left;
-}
-
-img {
-    position: relative, fixed;
-    width: 12%;
-    height: 35%;
-    display: inline-block;
-    padding: 15px;
-}
-
-
-
-/*gallery*/
-
-#galBody {
-    background-image: url('ab.jpg');
-    background-size: 1000px;
-    background-attachment: fixed;
-}
-
-#galDiv {
-    font: 50px "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    color: black;
-    top: 80px;
-    text-align: initial;
-    padding-top: 80px;
-    padding-bottom: 40px;
-    padding-right: 20px;
-    padding-left: 20px;
-    display: inline-block;
-    float: left;
-}
-
-#galDivPic {
-    background: rgba(0, 0, 0, 0.5);
-    border: 6px double black;
-    padding-bottom: 40px;
-    padding-top: 20px;
-    height: 90vh;
-    width: 90vw;
-    overflow-y: scroll;
-}
-
-
-
-/*class for button*/
-
-.button {
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    color: white;
-    border: 2.5px solid white;
-    padding: 10px;
-
-    text-align: center;
-    background: rgba(0, 0, 0, 0.5);
-    transition: 0.5s;
-}
-
-.thumbnails {
-    width: 20%;
-    height: 45%;
-    display: inline-block;
-    float: left;
-    padding-bottom: 45px;
-    padding-left: 45px;
-    padding-top: 25px;
-}
-
-
-
-/* width */
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-
-
-/* Handle */
-
-::-webkit-scrollbar-thumb {
-    background: #444;
-    border-radius: 5px;
-}
-
-
-
-/* Handle on hover */
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-=======
-/*search.hbs */
-
-h1 {
-    position: absolute;
-    text-align: center;
-    width: 600px;
-    height: 150px;
-    top: -220px;
-    left: 0px;
-    right: 0px;
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 15px;
-    font: 55px bold;
-    color: white;
-    text-shadow: -1.5px -1px 0 #000,
-    1.5px -1px 0 #000,
-    -1.5px 1px 0 #000,
-    1.5px 1px 0 #000;
-}
-
-
-
-/*login box*/
-
-#loginbox {
+#createAcc {
     position: absolute;
     background-color: white;
     width: 400px;
@@ -336,17 +49,39 @@ h1 {
     right: 0px;
     margin: auto;
     transition: 0.5s;
+	text-align: center;
 }
+
+.createAccLinks {
+    color: rgba(0, 0, 100, 1);
+    width: 80%;
+    opacity: 0.9;
+    letter-spacing: 1px;
+	background-color: lightgray;
+	border: solid rgba(0, 0, 100, 1) 2px;
+    padding: 14px 20px;
+	border-radius: 10px;
+	text-decoration: none;
+    transition: 0.5s;
+	cursor: pointer;
+}
+
 #logBut {
 	float: right;
+	border-radius: 10px;
+}
+
+input:focus, textarea:focus, select:focus{
+		outline: none;
 }
 
 .loginInput {
     width: 300px;
     height: 15px;
     left: 10px;
+	border-radius: 10px;
     padding: 15px;
-    margin: 30px 10px 0px 30px;
+    margin: 30px 10px 0px 15px;
     display: inline-block;
     border: none;
     background: #f1f1f1;
@@ -355,19 +90,20 @@ h1 {
 
 .loginBut {
     background-color: gray;
+	border-radius: 10px;
     color: white;
     padding: 14px 20px;
-    margin: 28px 0;
+    margin: 28px 28px;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 80%;
     opacity: 0.9;
     text-transform: uppercase;
     letter-spacing: 5px;
     transition: 0.5s;
 }
 .loginBut:hover {
-	background-color: rgba(0, 0, 0, 0.9);
+	background-color: rgba(0, 0, 100, 0.9);
 }
 
 
@@ -385,6 +121,7 @@ h1 {
 #searchdiv {
     position: absolute;
     background-color: rgba(50, 50, 50, 0.5);
+	border-radius: 25px;
     border: 5px double white;
     width: 600px;
     height: 150px;
@@ -399,6 +136,8 @@ h1 {
     position: absolute;
     top: 50px;
     left: 100px;
+	border-radius: 10px;
+	padding: 5px;
 }
 
 #galBut {
@@ -406,6 +145,7 @@ h1 {
     top: 180px;
     left: 150px;
     padding: 5px;
+	border-radius: 10px;
 }
 
 #favBut {
@@ -413,6 +153,8 @@ h1 {
     top: 180px;
     right: 150px;
     padding: 5px;
+	text-align: center;
+	border-radius: 10px;
 }
 
 #body {
@@ -425,10 +167,12 @@ h1 {
 #searchText {
     width: 300px;
     font-size: 24px;
+	padding-left: 10px;
+	border-radius: 10px;
 }
 
 .button:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(125, 125, 125, 0.8);
 }
 
 
@@ -580,5 +324,4 @@ img {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
->>>>>>> 32fc24eb32c4f6a1a9693021e0d7bb5f70634625
 }
