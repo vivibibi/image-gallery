@@ -34,17 +34,53 @@ h1 {
     right: 0px;
     margin: auto;
     transition: 0.5s;
+	text-align: center;
 }
+
+#createAcc {
+    position: absolute;
+    background-color: white;
+    width: 400px;
+    height: 400px;
+    display: none;
+    top: 70px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    transition: 0.5s;
+	text-align: center;
+}
+
+.createAccLinks {
+    color: rgba(0, 0, 100, 1);
+    width: 80%;
+    opacity: 0.9;
+    letter-spacing: 1px;
+	background-color: lightgray;
+	border: solid rgba(0, 0, 100, 1) 2px;
+    padding: 14px 20px;
+	border-radius: 10px;
+	text-decoration: none;
+    transition: 0.5s;
+	cursor: pointer;
+}
+
 #logBut {
 	float: right;
+	border-radius: 10px;
+}
+
+input:focus, textarea:focus, select:focus{
+		outline: none;
 }
 
 .loginInput {
     width: 300px;
     height: 15px;
     left: 10px;
+	border-radius: 10px;
     padding: 15px;
-    margin: 30px 10px 0px 30px;
+    margin: 30px 10px 0px 15px;
     display: inline-block;
     border: none;
     background: #f1f1f1;
@@ -53,19 +89,20 @@ h1 {
 
 .loginBut {
     background-color: gray;
+	border-radius: 10px;
     color: white;
     padding: 14px 20px;
-    margin: 28px 0;
+    margin: 28px 28px;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 80%;
     opacity: 0.9;
     text-transform: uppercase;
     letter-spacing: 5px;
     transition: 0.5s;
 }
 .loginBut:hover {
-	background-color: rgba(0, 0, 0, 0.9);
+	background-color: rgba(0, 0, 100, 0.9);
 }
 
 
@@ -83,6 +120,7 @@ h1 {
 #searchdiv {
     position: absolute;
     background-color: rgba(50, 50, 50, 0.5);
+	border-radius: 25px;
     border: 5px double white;
     width: 600px;
     height: 150px;
@@ -97,6 +135,8 @@ h1 {
     position: absolute;
     top: 50px;
     left: 100px;
+	border-radius: 10px;
+	padding: 5px;
 }
 
 #galBut {
@@ -104,6 +144,7 @@ h1 {
     top: 180px;
     left: 150px;
     padding: 5px;
+	border-radius: 10px;
 }
 
 #favBut {
@@ -111,6 +152,8 @@ h1 {
     top: 180px;
     right: 150px;
     padding: 5px;
+	text-align: center;
+	border-radius: 10px;
 }
 
 #body {
@@ -123,10 +166,12 @@ h1 {
 #searchText {
     width: 300px;
     font-size: 24px;
+	padding-left: 10px;
+	border-radius: 10px;
 }
 
 .button:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(125, 125, 125, 0.8);
 }
 
 
