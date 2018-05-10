@@ -4,7 +4,9 @@ var greyBack = document.getElementById("greyBack"),
 	defTop = null,
 	defBottom = null,
 	defMargin = null,
-	currentDiv = null;
+	currentDiv = null,
+    bin = document.getElementById("bin"),
+    previousDiv = null;
 
 function getID(e) {
 	e = e || window.event;
@@ -15,7 +17,10 @@ function getID(e) {
 		currentDiv = e
 	} else if (e.id == "greyBack") {
 		zoomOut(currentDiv);
-	}
+	} else if (e.id == "bin") {
+        zoomOut(currentDiv);
+        removeImage(currentDiv);
+    }
 }
 
 function zoomIn(element) {
@@ -36,6 +41,8 @@ function zoomIn(element) {
 	
 	greyBack.style.zIndex = "0"
 	greyBack.style.opacity = "0.75"
+    
+    bin.style.display = "block"
 }
 
 function zoomOut(element) {
@@ -50,4 +57,11 @@ function zoomOut(element) {
 	
 	greyBack.style.zIndex = "-1"
 	greyBack.style.opacity = "0"
+    
+    bin.style.display = "none"
+}
+
+
+function removeImage(e) {
+    e.parentNode.removeChild(e);
 }
