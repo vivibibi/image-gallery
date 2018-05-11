@@ -25,8 +25,10 @@ module.exports.favPic = (imgs) => {
         });
 
 
-        client.close();
+        
     });
+
+    client.close();
     /*
     var readimgs = fs.readFileSync('imgs.json');
 

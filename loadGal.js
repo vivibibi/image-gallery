@@ -19,7 +19,7 @@ module.exports.loadGal = function() {
 
             });
             
-
+            console.log(gallery_val)
             client.close();
             return gallery_val
         });

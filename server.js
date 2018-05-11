@@ -113,13 +113,15 @@ app.get('/favorite', (request, response) => {
 
     global.disfav = displayFav.displayFav();
 
+
+    /** 
+     * the HTML code is sent to be displayed
+
+     */
     setTimeout(function() {
         response.send(disfav);
     }, 4000);
-    /** 
-     * the HTML code is sent to be displayed
-     */
-    
+
 
 });
 
