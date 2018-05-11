@@ -1,4 +1,3 @@
-
 const express = require('express');
 const request = require('request');
 const fs = require('fs');
@@ -25,6 +24,17 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+app.post('/login', function(req, res) {
+    /*var user_id = req.body.id;
+    var token = req.body.token;
+    var geo = req.body.geo;
+
+    res.send(user_id + ' ' + token + ' ' + geo);*/
+});
 
 /**
  * Routes the / (root) path
@@ -32,8 +42,8 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/', (request, response) => {
     /**
-    * Displays the main page
-    */
+     * Displays the main page
+     */
     response.render('search.hbs')
 });
 
@@ -51,11 +61,12 @@ app.get('/results', (request, response) => {
      * get picture links from the query
      */
     getThumbs.getThumbnails(nquery, (errorMessage, results) => {
-        var searchedpics = displayRe.displayResults(errorMessage, results);
+        global.galThumbs = results;
+        global.searchedpics = displayRe.displayResults(errorMessage, results);
 
-    /** 
-     * the HTML code is sent to be displayed
-     */
+        /** 
+         * the HTML code is sent to be displayed
+         */
         response.send(searchedpics);
     });
 
@@ -66,19 +77,24 @@ app.get('/results', (request, response) => {
  */
 
 app.get('/gallery', (request, response) => {
-  /** 
-   * if user enters title and clicks the "save" button, an album will be added to gallery
-   */
-  if (request.query.title != undefined){
-    addAlbum.addAlbum(request.query.title, galThumbs);
-  }
+    /** 
+     * if user enters title and clicks the "save" button, an album will be added to gallery
+     */
+    if (request.query.title != undefined) {
+        addAlbum.addAlbum(request.query.title, galThumbs);
+    }
 
-  var disgal = displayGal.displayGal();
+    global.disgal = displayGal.displayGal();
+    setTimeout(function() {
+        response.send(disgal);
+    }, 4000);
+
 
     /** 
      * the HTML code is sent to be displayed
      */
-  response.send(disgal);
+
+
 });
 
 
@@ -88,19 +104,24 @@ app.get('/gallery', (request, response) => {
 
 app.get('/favorite', (request, response) => {
 
-/** 
-   * if user clicks the "favorite" button, the image will be added to favorite
-   */
-  if (request.query.favorite != undefined){
-    favPic.favPic(listofimgs[request.query.favorite]);
-  } 
+    /** 
+     * if user clicks the "favorite" button, the image will be added to favorite
+     */
+    if (request.query.favorite != undefined) {
+        favPic.favPic(listofimgs[request.query.favorite]);
+    }
 
-  var disfav = displayFav.displayFav();
+    global.disfav = displayFav.displayFav();
+
 
     /** 
      * the HTML code is sent to be displayed
+
      */
-  response.send(disfav);
+    setTimeout(function() {
+        response.send(disfav);
+    }, 4000);
+
 
 });
 
@@ -108,8 +129,8 @@ app.get('/favorite', (request, response) => {
 
 
 /** 
-   * push the server up on the port
-   */
+ * push the server up on the port
+ */
 app.listen(port, () => {
     console.log(`Server is up on the port ${port}`);
 

@@ -8,14 +8,17 @@ const loadGal = require('./loadGal.js');
 
 
 module.exports.displayGal = function() {
-    var disgal = ''
+    global.disgal = ''
 
-    var gallery_val = loadGal.loadGal();
-    var readgallery = fs.readFileSync('gallery.json');
-    var galPage = JSON.parse(readgallery);
-    var galPage1 = galPage.gal1;
+    global.gallery_val = loadGal.loadGal();
+    setTimeout(function() {
 
-    disgal += galPage1 + gallery_val;
-    return disgal
+        var readgallery = fs.readFileSync('gallery.json');
+        var galPage = JSON.parse(readgallery);
+        var galPage1 = galPage.gal1;
+
+        disgal += galPage1 + gallery_val;
+        return disgal
+    }, 4000);
+
 }
-

@@ -1,3 +1,4 @@
+
 var validateAddAlbum = require("./addAlbum");
 var validateFavPic = require("./favPic");
 var validateGetThumbnails = require("./getThumbnails");
@@ -81,3 +82,4 @@ describe("testing displayResults.js", () => {
         }, 4000);
 		
 	})
+})

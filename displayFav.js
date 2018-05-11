@@ -11,18 +11,20 @@ const loadImgs = require('./loadImgs.js');
 
 
 module.exports.displayFav = function() {
-    var disfav = '';
-    try {
-        fav_val = loadImgs.loadImgs();
 
-        var fav = fs.readFileSync('favorite.json');
-        var favP = JSON.parse(fav);
+
+    global.disfav = '';
+    global.favo_val = loadImgs.loadImgs();
+    setTimeout(function() {
+        var readfav = fs.readFileSync('favorite.json');
+        var favP = JSON.parse(readfav);
         var favPage = favP.fav1;
 
-        disfav += favPage + fav_val;
+        disfav += favPage + favo_val;
+        return disfav
+    }, 4000);
 
-    } catch (SyntaxError) {
-        disfav += '<font size="6"><b>No favorite images<b></font>';
-    }
-    return disfav
+
+
+    
 };
