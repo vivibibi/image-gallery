@@ -7,15 +7,25 @@ const fs = require('fs');
 
 module.exports.loadImgs = function() {
 
-    var readimgs = fs.readFileSync('imgs.json');
-    var favlist = JSON.parse(readimgs);
-    var fav_val = '';
 
-    for (var i = 0; i < favlist.length; i++) {
-        fav_val += '<img src=' + favlist[i] + ' <br>';
-    };
+    MongoClient.connect(uri, function(err, client) {
+        global.fav_val = '';
+        const gallery = client.db("Users").collection("Favorites");
+        gallery.find({
+            username: null
+        }).forEach(function(error, doc) {
+        	console.log(error);
+            global.fav_val += '<img src=' + error.img_link + ' <br>';
 
-    return fav_val
+
+        });
+
+
+        client.close();
+        return fav_val
+    });
+
+    
 
 
 }
