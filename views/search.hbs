@@ -21,16 +21,20 @@
             <input class="button" id="favBut" type="submit" value="Favorite" />
         </form>
     </div>
+    <h4 id='usern'>{{username}}</h4>
     <button class="button" id="logBut" onclick="document.getElementById('backPage').style.display='block'">Login</button>
-    <form action="/login" method="post">
+
+
         <div id="backPage">
-            <form action="action_page.php">
+            <form action="/" method="post">
                 <div id="loginbox">
                     <h3 class="header">Sign In</h3>
                     <input class="loginInput" type="text" placeholder="Username" name="uname" required>
                     <input class="loginInput" type="password" placeholder="Password" name="pswd" required>
                     <button class="loginBut" type="submit">Login</button>
                     <h4 id="lab" class="label">Need an account?</h4>
+
+
                     <a id="noAccount" class="createAccLinks" onclick="document.getElementById('createAcc').style.display='block'; document.getElementById('loginbox').style.display='none'">Sign Up</a>
                 </div>
             </form>

@@ -8,7 +8,7 @@ var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@eur
 
 
 
-module.exports.loadImgs = function() {
+module.exports.loadImgs = function(user) {
     global.favo_val = '';
     
     try {
@@ -17,7 +17,7 @@ module.exports.loadImgs = function() {
 
             const gallery = client.db("Users").collection("Favorites");
             gallery.find({
-                username: null
+                username: user
             }).forEach(function(error, doc) {
 
                 favo_val += '<img src=' + error.img_link + ' <br>';
@@ -26,6 +26,7 @@ module.exports.loadImgs = function() {
 
             client.close();
             setTimeout(function() {
+                console.log(favo_val)
                 return favo_val
             }, 4000);
 

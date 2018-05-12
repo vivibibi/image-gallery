@@ -28,13 +28,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-app.post('/login', function(req, res) {
-    /*var user_id = req.body.id;
-    var token = req.body.token;
-    var geo = req.body.geo;
-
-    res.send(user_id + ' ' + token + ' ' + geo);*/
-});
+global.session_user = 'Guest'
 
 /**
  * Routes the / (root) path
@@ -44,9 +38,25 @@ app.get('/', (request, response) => {
     /**
      * Displays the main page
      */
-    response.render('search.hbs')
+  
+    response.render('search.hbs', {
+        title: 'Home Page',
+        username: session_user
+
+    });
 });
 
+app.post('/', (req, res) => {
+    console.log(res.req.body.uname);
+    global.session_user = res.req.body.uname
+    res.render('search.hbs', {
+        title: 'Home Page',
+        username: session_user
+
+    });
+
+
+});
 
 /**
  * Routes the /results path
@@ -81,10 +91,10 @@ app.get('/gallery', (request, response) => {
      * if user enters title and clicks the "save" button, an album will be added to gallery
      */
     if (request.query.title != undefined) {
-        addAlbum.addAlbum(request.query.title, galThumbs);
+        addAlbum.addAlbum(request.query.title, galThumbs, session_user);
     }
 
-    global.disgal = displayGal.displayGal();
+    global.disgal = displayGal.displayGal(session_user);
     setTimeout(function() {
         response.send(disgal);
     }, 4000);
@@ -108,11 +118,11 @@ app.get('/favorite', (request, response) => {
      * if user clicks the "favorite" button, the image will be added to favorite
      */
     if (request.query.favorite != undefined) {
-        favPic.favPic(listofimgs[request.query.favorite]);
+        favPic.favPic(listofimgs[request.query.favorite], session_user);
     }
 
-    global.disfav = displayFav.displayFav();
-    
+    global.disfav = displayFav.displayFav(session_user);
+
 
     /** 
      * the HTML code is sent to be displayed

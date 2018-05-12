@@ -7,10 +7,10 @@ const loadGal = require('./loadGal.js');
  */
 
 
-module.exports.displayGal = function() {
+module.exports.displayGal = function(user) {
     global.disgal = ''
 
-    global.gallery_val = loadGal.loadGal();
+    global.gallery_val = loadGal.loadGal(user);
     setTimeout(function() {
 
         var readgallery = fs.readFileSync('gallery.json');

@@ -29,7 +29,7 @@ module.exports.getThumbnails = function(query, callback) {
                 try {
                     piclist.push(body.items[i].edmPreview[0])
                 } catch (TypeError) {
-                    console.log(Error);
+                    //console.log(Error);
                 }
             }
             if (typeof piclist !== 'undefined' && piclist.length > 0){

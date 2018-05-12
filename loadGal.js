@@ -4,14 +4,14 @@ var MongoClient = require('mongodb').MongoClient;
 var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@europeanaimaging-porog.mongodb.net/Users?retryWrites=true";
 
 
-module.exports.loadGal = function() {
+module.exports.loadGal = function(user) {
     try {
 
         MongoClient.connect(uri, function(err, client) {
             global.gallery_val = '';
             const gallery = client.db("Users").collection("Gallery");
             gallery.find({
-                username: null
+                username: user
             }).forEach(function(error, doc) {
 
                 global.gallery_val += '<div id=galDiv <br> <b>' + error.title + '</b><br><div id=galDivPic <img id=galDivPic src=' + error.img_links + ' </div> </div>';

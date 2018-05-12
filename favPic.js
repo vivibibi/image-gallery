@@ -8,7 +8,7 @@ var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@eur
  * @requires fs
  */
 
-module.exports.favPic = (imgs) => {
+module.exports.favPic = (imgs, user) => {
 
 
     var photolist = []
@@ -21,7 +21,7 @@ module.exports.favPic = (imgs) => {
         const fav = client.db("Users").collection("Favorites");
         fav.insert({
             img_link: imgs,
-            username: null
+            username: user
         });
 
 

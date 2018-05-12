@@ -9,7 +9,7 @@ var album = {
     imgs: 'imgs',
 };
 
-module.exports.addAlbum = (title, imgs) => {
+module.exports.addAlbum = (title, imgs, user) => {
 
 
     var imglist = []
@@ -24,7 +24,7 @@ module.exports.addAlbum = (title, imgs) => {
 
         const gallery = client.db("Users").collection("Gallery");
         gallery.insert({
-            username: null,
+            username: user,
             img_links: imgs,
             title: title
         });
