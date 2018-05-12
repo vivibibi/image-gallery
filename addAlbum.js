@@ -10,7 +10,7 @@ var album = {
 };
 
 module.exports.addAlbum = (title, imgs) => {
-    console.log('Adding album');
+
 
     var imglist = []
 

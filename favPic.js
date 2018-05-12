@@ -9,7 +9,7 @@ var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@eur
  */
 
 module.exports.favPic = (imgs) => {
-    console.log('Favorite picture');
+
 
     var photolist = []
 
@@ -25,10 +25,10 @@ module.exports.favPic = (imgs) => {
         });
 
 
-        
+        client.close();
     });
 
-    client.close();
+    
     /*
     var readimgs = fs.readFileSync('imgs.json');
 

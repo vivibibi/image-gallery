@@ -9,25 +9,31 @@ var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@eur
 
 
 module.exports.loadImgs = function() {
+    global.favo_val = '';
+    
     try {
 
         MongoClient.connect(uri, function(err, client) {
-            global.favo_val = '';
+
             const gallery = client.db("Users").collection("Favorites");
             gallery.find({
                 username: null
             }).forEach(function(error, doc) {
 
-                global.favo_val += '<img src=' + error.img_link + ' <br>';
-                
+                favo_val += '<img src=' + error.img_link + ' <br>';
+               
             });
-            
+
             client.close();
-            
+            setTimeout(function() {
+                return favo_val
+            }, 4000);
+
         });
 
 
-      
+
+
     } catch (SyntaxError) {
         favo_val += '<font size="6"><b>No favorite images<b></font>';
         return favo_val

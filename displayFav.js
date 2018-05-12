@@ -15,16 +15,17 @@ module.exports.displayFav = function() {
 
     global.disfav = '';
     global.favo_val = loadImgs.loadImgs();
-    setTimeout(function() {
-        var readfav = fs.readFileSync('favorite.json');
-        var favP = JSON.parse(readfav);
-        var favPage = favP.fav1;
-
-        disfav += favPage + favo_val;
-        return disfav
-    }, 4000);
 
 
+    var readfav = fs.readFileSync('favorite.json');
+    var favP = JSON.parse(readfav);
+    var favPage = favP.fav1;
 
-    
+    disfav += favPage + favo_val;
+    return disfav
+
+
+
+
+
 };

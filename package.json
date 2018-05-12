@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "main": "getThumbnails.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest",
     "start": "node server.js"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
   },
   "author": "",
   "license": "ISC",
@@ -22,4 +27,5 @@
     "jest": "^22.4.3"
   },
   "description": ""
+
 }

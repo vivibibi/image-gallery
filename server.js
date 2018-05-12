@@ -112,7 +112,7 @@ app.get('/favorite', (request, response) => {
     }
 
     global.disfav = displayFav.displayFav();
-
+    
 
     /** 
      * the HTML code is sent to be displayed

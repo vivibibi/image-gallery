@@ -1,76 +1,58 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
-	<meta charset='utf-8'>
-	<title>{{title}}</title>
-	<link href="style.css" rel="stylesheet" type="text/css" />
+    <meta charset='utf-8'>
+    <title>{{title}}</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body id="body">
-	<div id="searchdiv">
-		<h1 id="head">Europeana Gallery</h1>
-		<form id="form" action="/results" method="GET">
-			<input id="searchText" type="text" name="query" placeholder="Search" />
-			<input class="button" id="subBut" type="submit" value="Submit">
-		</form>
-		<form action="/gallery" method="GET">
-			<input class="button" id="galBut" type="submit" value="Gallery" />
-		</form>
-		<form action="/favorite" method="GET">
-			<input class="button" id="favBut" type="submit" value="Favorite" />
-		</form>
-	</div>
-
-	<button class="button" id="logBut" onclick="document.getElementById('backPage').style.display='block'">Login</button>
-
-<<<<<<< HEAD
-	<form action="/login" method="post">
-=======
-    <div id="backPage">
-	<form action="action_page.php">
->>>>>>> 21f4c0d9fb100e58dfcda5793da99c214b06dd71
-		<div id="loginbox">
-            <h3 class="header">Sign In</h3>
-			<input class="loginInput" type="text" placeholder="Username" name="uname" required>
-			<input class="loginInput" type="password" placeholder="Password" name="pswd" required>
-			<button class="loginBut" type="submit">Login</button>
-
-            <h4 id="lab" class="label">Need an account?</h4>
-			<a id="noAccount" class="createAccLinks" onclick="document.getElementById('createAcc').style.display='block'; document.getElementById('loginbox').style.display='none'">Sign Up</a>
-		</div>
-<<<<<<< HEAD
-	</form>
-	<form action="/create_account" method="post">
-=======
-
->>>>>>> 21f4c0d9fb100e58dfcda5793da99c214b06dd71
-		<div id="createAcc">
-			<input class="loginInput" type="text" placeholder="Username" name="uname" required>
-			<input class="loginInput" type="password" placeholder="Password" name="pswd" required>
-			<input class="loginInput" type="password" placeholder="Confirm Password" name="pswd" required>
-			<button class="loginBut" type="submit">Create Account</button>
-<<<<<<< HEAD
-			<a id="haveAcc" class="createAccLinks" onclick="document.getElementById('loginbox').style.display='block'; document.getElementById('createAcc').style.display='none'">Already have an account? Log-in now!</a>
-		</div>
-	</form>
-=======
->>>>>>> 21f4c0d9fb100e58dfcda5793da99c214b06dd71
-
-            <h4 class="label">Already have an account?</h4>
-			<a id="haveAcc" class="createAccLinks" onclick="document.getElementById('loginbox').style.display='block'; document.getElementById('createAcc').style.display='none'">Login</a>
-		</div>
+    <div id="searchdiv">
+        <h1 id="head">Europeana Gallery</h1>
+        <form id="form" action="/results" method="GET">
+            <input id="searchText" type="text" name="query" placeholder="Search" />
+            <input class="button" id="subBut" type="submit" value="Submit">
+        </form>
+        <form action="/gallery" method="GET">
+            <input class="button" id="galBut" type="submit" value="Gallery" />
+        </form>
+        <form action="/favorite" method="GET">
+            <input class="button" id="favBut" type="submit" value="Favorite" />
+        </form>
     </div>
+    <button class="button" id="logBut" onclick="document.getElementById('backPage').style.display='block'">Login</button>
+    <form action="/login" method="post">
+        <div id="backPage">
+            <form action="action_page.php">
+                <div id="loginbox">
+                    <h3 class="header">Sign In</h3>
+                    <input class="loginInput" type="text" placeholder="Username" name="uname" required>
+                    <input class="loginInput" type="password" placeholder="Password" name="pswd" required>
+                    <button class="loginBut" type="submit">Login</button>
+                    <h4 id="lab" class="label">Need an account?</h4>
+                    <a id="noAccount" class="createAccLinks" onclick="document.getElementById('createAcc').style.display='block'; document.getElementById('loginbox').style.display='none'">Sign Up</a>
+                </div>
+            </form>
+            <form action="/create_account" method="post">
+                <div id="createAcc">
+                    <input class="loginInput" type="text" placeholder="Username" name="uname" required>
+                    <input class="loginInput" type="password" placeholder="Password" name="pswd" required>
+                    <input class="loginInput" type="password" placeholder="Confirm Password" name="pswd" required>
+                    <button class="loginBut" type="submit">Create Account</button>
+                    <a id="haveAcc" class="createAccLinks" onclick="document.getElementById('loginbox').style.display='block'; document.getElementById('createAcc').style.display='none'">Already have an account? Log-in now!</a>
+                </div>
+            </form>
+        </div>
+        </div>
 </body>
-
 <script>
 var loginBox = document.getElementById('loginbox');
 var createBox = document.getElementById('createAcc');
 var page = document.getElementById('backPage');
 
-window.onclick = function(event){
-    if (event.target == backPage){
+window.onclick = function(event) {
+    if (event.target == backPage) {
         backPage.style.display = "none";
     }
 }
