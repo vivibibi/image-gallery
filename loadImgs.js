@@ -8,7 +8,7 @@ var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@eur
 
 
 
-module.exports.loadImgs = function(user) {
+module.exports.loadImgs = function(user, callback) {
     global.favo_val = '';
     
     try {
@@ -25,9 +25,12 @@ module.exports.loadImgs = function(user) {
             });
 
             client.close();
+
+
             setTimeout(function() {
+                callback(favo_val)
                 console.log(favo_val)
-                return favo_val
+                
             }, 4000);
 
         });
@@ -37,7 +40,7 @@ module.exports.loadImgs = function(user) {
 
     } catch (SyntaxError) {
         favo_val += '<font size="6"><b>No favorite images<b></font>';
-        return favo_val
+        callback(favo_val)
     }
 
 }

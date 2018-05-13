@@ -3,17 +3,16 @@ const request = require('request');
 const fs = require('fs');
 const hbs = require('hbs');
 const port = process.env.PORT || 8080;
+const bodyParser = require('body-parser');
 
 const addAlbum = require('./addAlbum.js');
 const getThumbs = require('./getThumbnails.js');
 const favPic = require('./favPic.js');
-const displayRe = require('./displayResults.js')
-const displayGal = require('./displayGal.js')
-const displayFav = require('./displayFav.js')
+const displayRe = require('./displayResults.js');
+const displayGal = require('./displayGal.js');
+const displayFav = require('./displayFav.js');
+const checkPassword = require('./checkPassword.js');
 
-
-var thumbs = [],
-    nquery = '';
 
 
 var app = express();
@@ -24,11 +23,14 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
-var bodyParser = require('body-parser');
+
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 global.session_user = 'Guest'
+var thumbs = [],
+    nquery = '';
+
 
 /**
  * Routes the / (root) path
@@ -38,7 +40,7 @@ app.get('/', (request, response) => {
     /**
      * Displays the main page
      */
-  
+
     response.render('search.hbs', {
         title: 'Home Page',
         username: session_user
@@ -47,14 +49,18 @@ app.get('/', (request, response) => {
 });
 
 app.post('/', (req, res) => {
-    console.log(res.req.body.uname);
-    global.session_user = res.req.body.uname
-    res.render('search.hbs', {
-        title: 'Home Page',
-        username: session_user
 
-    });
+    checkPassword.checkPassword(res.req.body.uname, res.req.body.pswd, (result) => {
+        if (result === true) {
+            global.session_user = res.req.body.uname
+        }
 
+        res.render('search.hbs', {
+            title: 'Home Page',
+            username: session_user
+
+        });
+    })
 
 });
 
@@ -94,10 +100,9 @@ app.get('/gallery', (request, response) => {
         addAlbum.addAlbum(request.query.title, galThumbs, session_user);
     }
 
-    global.disgal = displayGal.displayGal(session_user);
-    setTimeout(function() {
-        response.send(disgal);
-    }, 4000);
+    displayGal.displayGal(session_user, (result) => {
+        response.send(result);
+    });
 
 
     /** 
@@ -121,17 +126,14 @@ app.get('/favorite', (request, response) => {
         favPic.favPic(listofimgs[request.query.favorite], session_user);
     }
 
-    global.disfav = displayFav.displayFav(session_user);
+    displayFav.displayFav(session_user, (result) => {
 
-
-    /** 
+        /** 
      * the HTML code is sent to be displayed
 
      */
-    setTimeout(function() {
-        response.send(disfav);
-    }, 4000);
-
+        response.send(result);
+    });
 
 });
 

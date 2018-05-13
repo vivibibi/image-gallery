@@ -4,7 +4,7 @@ var MongoClient = require('mongodb').MongoClient;
 var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@europeanaimaging-porog.mongodb.net/Users?retryWrites=true";
 
 
-module.exports.loadGal = function(user) {
+module.exports.loadGal = function(user, callback) {
     try {
 
         MongoClient.connect(uri, function(err, client) {
@@ -15,13 +15,16 @@ module.exports.loadGal = function(user) {
             }).forEach(function(error, doc) {
 
                 global.gallery_val += '<div id=galDiv <br> <b>' + error.title + '</b><br><div id=galDivPic <img id=galDivPic src=' + error.img_links + ' </div> </div>';
-                
+
 
             });
-            
-            console.log(gallery_val)
             client.close();
-            return gallery_val
+            setTimeout(function() {
+                callback(gallery_val)
+            }, 1000);
+
+
+
         });
 
 
@@ -33,7 +36,7 @@ module.exports.loadGal = function(user) {
         }*/
     } catch (SyntaxError) {
         gallery_val += '<font size="6"><b>No albums<b></font>';
-        return gallery_val
+        callback(gallery_val)
     }
 
 }

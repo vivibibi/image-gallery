@@ -10,23 +10,18 @@ const loadImgs = require('./loadImgs.js');
 
 
 
-module.exports.displayFav = function(user) {
+module.exports.displayFav = function(user, callback) {
 
 
     global.disfav = '';
-    global.favo_val = loadImgs.loadImgs(user);
-    setTimeout(function() {
-        var readfav = fs.readFileSync('favorite.json');
+    loadImgs.loadImgs(user, (result) => {
+    	var readfav = fs.readFileSync('favorite.json');
         var favP = JSON.parse(readfav);
         var favPage = favP.fav1;
 
         disfav += favPage + favo_val;
-        return disfav
-    }, 4000);
-
-
-
-
-
+        callback(disfav)
+    });
+    
 
 };
