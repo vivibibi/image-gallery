@@ -7,7 +7,7 @@ var validateLoadGal = require("./loadGal.js");
 var validateDisplayGal = require("./displayGal.js");
 var validateDisplayResults = require("./displayResults.js");
 var validateCreateAccount = require("./createAccount.js");
-
+var validateCheckPassword = require("./checkPassword.js");
 
 
 
@@ -113,9 +113,9 @@ describe("testing displayResults.js", () => {
     });
 });
 
-var account = validateCreateAccount.createAccount("user", "pass");
 
-describe.only('testing createAccount.js', () => {
+
+describe('testing createAccount.js', () => {
     test('creates an account', () => {
         expect(account).toHaveProperty('username');
         expect(account).toHaveProperty('password');
@@ -134,6 +134,19 @@ describe.only('testing createAccount.js', () => {
 
             });
         });
+
+    });
+});
+
+var account = validateCreateAccount.createAccount("coolguy", "verycool");
+
+describe.only("testing checkPassword.js", () => {
+    test("verifies the password used to login", () => {
+        setTimeout(function() {
+            expect(validateCheckPassword.checkPassword(account.username, "pass")).toBeTruthy()
+            expect(validateCheckPassword.checkPassword(account.username, "x")).toBeFalsy()
+
+        }, 4000);
 
     });
 });
