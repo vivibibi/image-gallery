@@ -9,9 +9,10 @@ const addAlbum = require('./addAlbum.js');
 const getThumbs = require('./getThumbnails.js');
 const favPic = require('./favPic.js');
 const displayRe = require('./displayResults.js');
-const displayGal = require('./displayGal.js');
-const displayFav = require('./displayFav.js');
+
+const loadGal = require('./loadGal.js');
 const checkPassword = require('./checkPassword.js');
+const loadImgs = require('./loadImgs.js');
 
 
 
@@ -83,7 +84,12 @@ app.get('/results', (request, response) => {
         /** 
          * the HTML code is sent to be displayed
          */
-        response.send(searchedpics);
+         response.render('results.hbs', {
+            title: 'Results',
+            pictures: searchedpics
+
+        });
+
     });
 
 });
@@ -100,9 +106,15 @@ app.get('/gallery', (request, response) => {
         addAlbum.addAlbum(request.query.title, galThumbs, session_user);
     }
 
-    displayGal.displayGal(session_user, (result) => {
-        response.send(result);
+    loadGal.loadGal(session_user, (result) => {
+        response.render('gallery.hbs', {
+            title: 'Gallery',
+            album: result
+
+        });
     });
+    
+ 
 
 
     /** 
@@ -125,15 +137,14 @@ app.get('/favorite', (request, response) => {
     if (request.query.favorite != undefined) {
         favPic.favPic(listofimgs[request.query.favorite], session_user);
     }
-
-    displayFav.displayFav(session_user, (result) => {
-
-        /** 
-     * the HTML code is sent to be displayed
-
-     */
-        response.send(result);
+    loadImgs.loadImgs(session_user, (result) => {
+      response.render('favorite.hbs', {
+            username: session_user,
+            favorites: result
+        });
     });
+    
+    
 
 });
 
@@ -147,3 +158,5 @@ app.listen(port, () => {
     console.log(`Server is up on the port ${port}`);
 
 });
+
+

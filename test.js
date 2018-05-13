@@ -2,9 +2,9 @@ var validateAddAlbum = require("./addAlbum");
 var validateFavPic = require("./favPic");
 var validateGetThumbnails = require("./getThumbnails");
 var validateloadImgs = require("./loadImgs.js");
-var validateDisplayFav = require("./displayFav.js");
+
 var validateLoadGal = require("./loadGal.js");
-var validateDisplayGal = require("./displayGal.js");
+
 var validateDisplayResults = require("./displayResults.js");
 var validateCreateAccount = require("./createAccount.js");
 var validateCheckPassword = require("./checkPassword.js");
@@ -75,14 +75,7 @@ describe("testing loadImgs.js", () => {
     });
 });
 
-describe("testing displayFav.js", () => {
-    test("adds the html of the favorite page to the actual list of favorited imgs", () => {
-        setTimeout(function() {
-            expect(validateDisplayFav.displayFav()).toContain('Main Page');
-        }, 4000);
 
-    });
-});
 
 describe("testing loadGal.js", () => {
     test("adds html to the raw links of the albums", () => {
@@ -93,14 +86,7 @@ describe("testing loadGal.js", () => {
     });
 });
 
-describe("testing displayGal.js", () => {
-    test("combines the page's HTML with the albums' HTML", () => {
-        setTimeout(function() {
-            expect(validateDisplayGal.displayGal()).toContain("rel='stylesheet'");
-        }, 4000);
 
-    });
-});
 
 describe("testing displayResults.js", () => {
     test("combines the page's HTML with the albums' HTML", () => {
@@ -125,12 +111,10 @@ describe('testing createAccount.js', () => {
         MongoClient.connect(uri, function(err, client) {
             const users = client.db("Users").collection("Users");
             users.find({
-                username: "user"
+                username: "coolguy"
             }).forEach(function(error, doc) {
-
-
-                expect(error.username).toContain('user');
-                expect(error.password).toContain('pass');
+                expect(error.username).toContain('coolguy');
+                expect(error.password).toContain('verycool');
 
             });
         });
@@ -140,13 +124,23 @@ describe('testing createAccount.js', () => {
 
 var account = validateCreateAccount.createAccount("coolguy", "verycool");
 
-describe.only("testing checkPassword.js", () => {
-    test("verifies the password used to login", () => {
-        setTimeout(function() {
-            expect(validateCheckPassword.checkPassword(account.username, "pass")).toBeTruthy()
-            expect(validateCheckPassword.checkPassword(account.username, "x")).toBeFalsy()
-
-        }, 4000);
+describe("testing checkPassword.js", () => {
+    test("verifies a valid password", () => {
+        validateCheckPassword.checkPassword(account.username, "verycool", (result) => {
+            expect(result).toBeTruthy()
+        })
+    })
+    test("verifies an invalid password", () => {
+        validateCheckPassword.checkPassword(account.username, "x", (result) => {
+            expect(result).toBeFalsy()
+        })
+    })
+    test("verifies username doesnt exist", () => {
+        validateCheckPassword.checkPassword('y', "verycool", (result) => {
+            expect(result).toBeUndefined()
+        })
 
     });
 });
+
+
