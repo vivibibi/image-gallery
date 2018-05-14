@@ -13,7 +13,6 @@ module.exports.getThumbnails = function(query, callback) {
         url: 'https://www.europeana.eu/api/v2/search.json?wskey=BScfR482T&query=' + encodeURIComponent(query),
         json: true
     }, (error, response, body) => {
-
         var piclist = [];
         if (error) {
             console.log(error)
@@ -21,11 +20,9 @@ module.exports.getThumbnails = function(query, callback) {
         }
         if (response.statusCode == 401) {
             callback("API key is invalid");
-
         }
         if (response.statusCode == 429) {
             callback("Application has reached its usage limit");
-
         }
         if (response.statusCode == 200) {
             for (i = 0; i < body.items.length; i++) {

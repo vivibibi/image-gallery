@@ -7,7 +7,6 @@ module.exports.createAccount = function(user, pass) {
         password: pass,
     };
     MongoClient.connect(uri, function(err, client) {
-
         const users = client.db("Users").collection("Users");
         users.insert({
             username: user,

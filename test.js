@@ -5,7 +5,7 @@ var validateloadImgs = require("./loadImgs.js");
 
 var validateLoadGal = require("./loadGal.js");
 
-var validateDisplayResults = require("./displayResults.js");
+
 var validateCreateAccount = require("./createAccount.js");
 var validateCheckPassword = require("./checkPassword.js");
 
@@ -92,9 +92,16 @@ describe("testing api", () => {
 
 describe("testing loadImgs.js", () => {
     test("loads a list of imgs into a string", () => {
-        setTimeout(function() {
-            expect(validateloadImgs.loadImgs()).toContain('img src');
-        }, 4000);
+        validateloadImgs.loadImgs('Guest', (result) => {
+            expect(result).toContain('img src');
+        });
+
+    });
+
+    test("invalid username", () => {
+        validateloadImgs.loadImgs('jdsl', (result) => {
+            expect(result).toContain('img src');
+        });
 
     });
 });
@@ -106,24 +113,9 @@ describe("testing loadGal.js", () => {
         validateLoadGal.loadGal('coolguy', (results) => {
             expect(results).toContain('id=galDiv');
         })
-        
-
-
     });
 });
 
-
-
-describe("testing displayResults.js", () => {
-    test("combines the page's HTML with the albums' HTML", () => {
-        validateGetThumbnails.getThumbnails("gala", (errorMessage, results) => {
-            expect(validateDisplayResults.displayResults(errorMessage, results)).toContain("<img class=thumbnails");
-        })
-        validateGetThumbnails.getThumbnails("cat", (errorMessage, results) => {
-            expect(validateDisplayResults.displayResults(errorMessage, results)).toContain("No images found");
-        })
-    });
-});
 
 
 var account = validateCreateAccount.createAccount("coolguy", "verycool");

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1526320595898" clover="3.2.0">
-  <project timestamp="1526320595898" name="All files">
-    <metrics statements="99" coveredstatements="44" conditionals="16" coveredconditionals="2" methods="18" coveredmethods="6" elements="133" coveredelements="52" complexity="0" loc="99" ncloc="99" packages="1" files="8" classes="8">
+<coverage generated="1526333936654" clover="3.2.0">
+  <project timestamp="1526333936655" name="All files">
+    <metrics statements="78" coveredstatements="43" conditionals="14" coveredconditionals="2" methods="17" coveredmethods="7" elements="109" coveredelements="52" complexity="0" loc="78" ncloc="78" packages="1" files="7" classes="7">
       <file name="addAlbum.js" path="C:\Users\dream\Documents\seme2\WebAppDev\proj\final\addAlbum.js">
         <metrics statements="14" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -33,25 +33,10 @@
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-      </file>
-      <file name="displayResults.js" path="C:\Users\dream\Documents\seme2\WebAppDev\proj\final\displayResults.js">
-        <metrics statements="12" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
       </file>
       <file name="favPic.js" path="C:\Users\dream\Documents\seme2\WebAppDev\proj\final\favPic.js">
         <metrics statements="10" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
@@ -70,60 +55,51 @@
         <metrics statements="19" coveredstatements="3" conditionals="12" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="30" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="39" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="40" count="0" type="stmt"/>
-      </file>
-      <file name="loadGal.js" path="C:\Users\dream\Documents\seme2\WebAppDev\proj\final\loadGal.js">
-        <metrics statements="15" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-      </file>
-      <file name="loadImgs.js" path="C:\Users\dream\Documents\seme2\WebAppDev\proj\final\loadImgs.js">
-        <metrics statements="16" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="18" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="36" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="37" count="0" type="stmt"/>
+      </file>
+      <file name="loadGal.js" path="C:\Users\dream\Documents\seme2\WebAppDev\proj\final\loadGal.js">
+        <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+      </file>
+      <file name="loadImgs.js" path="C:\Users\dream\Documents\seme2\WebAppDev\proj\final\loadImgs.js">
+        <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
       </file>
     </metrics>
   </project>

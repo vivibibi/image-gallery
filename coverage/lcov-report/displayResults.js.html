@@ -76,15 +76,8 @@
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -92,60 +85,64 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const request = require('request');
 const fs = require('fs');
 &nbsp;
-/**
- * Display searched images
- * @param {string} query - The query sent to the API
- * @requires request
- * @returns {list} piclist -  A list of HTML strings containing the image result's URLS.
- */
 &nbsp;
 module.exports.displayResults = <span class="fstat-no" title="function not covered" >fu</span>nction(errorMessage, results) {
 <span class="cstat-no" title="statement not covered" >    global.formatThumbs = '&lt;br&gt;';</span>
-    /** 
-     * if there's no pictures returned, an error message will be displayed
-     */
-<span class="cstat-no" title="statement not covered" >    if (results == undefined) {</span>
-<span class="cstat-no" title="statement not covered" >        console.log(errorMessage);</span>
-<span class="cstat-no" title="statement not covered" >        formatThumbs += '&lt;h1&gt;' + errorMessage + '&lt;/h1&gt;';</span>
-        /** 
-         * else the URLs will be encapsulated in HTML code and written to a JSON file
-         */
-    } else {
-<span class="cstat-no" title="statement not covered" >        global.listofimgs = [];</span>
 &nbsp;
+&nbsp;
+    /** 
+     * else the URLs will be encapsulated in HTML code and returned
+     */
+<span class="cstat-no" title="statement not covered" >    if (results) {</span>
+<span class="cstat-no" title="statement not covered" >        global.listofimgs = [];</span>
 <span class="cstat-no" title="statement not covered" >        for (i = 0; i &lt; results.length; i++) {</span>
 <span class="cstat-no" title="statement not covered" >            listofimgs.push(results[i]);</span>
 <span class="cstat-no" title="statement not covered" >            formatThumbs += '&lt;img class=thumbnails src=' + results[i] + '&gt;&lt;form id=favForm method=GET action=/favorite&gt;' +</span>
                 '&lt;button name=favorite id=favorite value=' + i + '' + ' type=submit&gt;❤&lt;/button&gt;&lt;/form&gt;';
-        } 
-        
-    } <span class="cstat-no" title="statement not covered" >return formatThumbs </span>
+        }
+<span class="cstat-no" title="statement not covered" >        return formatThumbs</span>
+    } else {
+        /** 
+         * if there's no pictures returned, an error message will be displayed
+         */
+<span class="cstat-no" title="statement not covered" >        formatThumbs += '&lt;h1&gt;' + errorMessage + '&lt;/h1&gt;';</span>
+<span class="cstat-no" title="statement not covered" >        return formatThumbs</span>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+    }
 };</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 14 2018 10:56:35 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 14 2018 14:16:03 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="prettify.js"></script>

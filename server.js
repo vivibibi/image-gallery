@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const addAlbum = require('./addAlbum.js');
 const getThumbs = require('./getThumbnails.js');
 const favPic = require('./favPic.js');
-const displayRe = require('./displayResults.js');
+
 const loadGal = require('./loadGal.js');
 const checkPassword = require('./checkPassword.js');
 const loadImgs = require('./loadImgs.js');
@@ -89,14 +89,38 @@ app.get('/results', (request, response) => {
      * get picture links from the query
      */
     getThumbs.getThumbnails(response.req.query.query, (errorMessage, results) => {
+        global.formatThumbs = '<br>';
+        /** 
+         * the URLs will be encapsulated in HTML code and returned
+         */
+        if (results) {
+            global.listofimgs = [];
+            global.galThumbs = '<br>';
+            for (i = 0; i < results.length; i++) {
+                listofimgs.push(results[i]);
+                galThumbs += '<img class=thumbnails src=' + results[i] + '>';
+                formatThumbs += '<img class=thumbnails src=' + results[i] + '><form id=favForm method=GET action=/favorite>' +
+                    '<button name=favorite id=favorite value=' + i + '' + ' type=submit>❤</button></form>';
+            }
+
+        } else {
+            /** 
+             * if there's no pictures returned, an error message will be displayed
+             */
+            formatThumbs += '<h1>' + errorMessage + '</h1>';
+
+        }
         /** 
          * the HTML code is sent to be displayed
          */
-        response.render('results.hbs', {
-            title: 'Results',
-            pictures: displayRe.displayResults(errorMessage, results)
+        setTimeout(function() {
+            response.render('results.hbs', {
+                title: 'Results',
+                pictures: formatThumbs
 
-        });
+            });
+        }, 2000);
+
 
     });
 
