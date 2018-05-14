@@ -90,8 +90,9 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -106,8 +107,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -116,26 +129,16 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
-const request = require('request');
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const request = require('request');
 &nbsp;
 &nbsp;
 /**
@@ -150,41 +153,44 @@ module.exports.getThumbnails = function(query, callback) {
         url: 'https://www.europeana.eu/api/v2/search.json?wskey=BScfR482T&amp;query=' + encodeURIComponent(query),
         json: true
     }, <span class="fstat-no" title="function not covered" >(e</span>rror, response, body) =&gt; {
+&nbsp;
         var piclist = <span class="cstat-no" title="statement not covered" >[];</span>
 <span class="cstat-no" title="statement not covered" >        if (error) {</span>
 <span class="cstat-no" title="statement not covered" >            console.log(error)</span>
 <span class="cstat-no" title="statement not covered" >            callback("can't connect to europeana api");</span>
-        } else <span class="cstat-no" title="statement not covered" >if (response.statusCode == 401) {</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (response.statusCode == 401) {</span>
 <span class="cstat-no" title="statement not covered" >            callback("API key is invalid");</span>
 &nbsp;
-        } else <span class="cstat-no" title="statement not covered" >if (response.statusCode == 429) {</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (response.statusCode == 429) {</span>
 <span class="cstat-no" title="statement not covered" >            callback("Application has reached its usage limit");</span>
 &nbsp;
-        } else <span class="cstat-no" title="statement not covered" >if (response.statusCode == 200) {</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (response.statusCode == 200) {</span>
 <span class="cstat-no" title="statement not covered" >            for (i = 0; i &lt; body.items.length; i++) {</span>
 <span class="cstat-no" title="statement not covered" >                try {</span>
 <span class="cstat-no" title="statement not covered" >                    piclist.push(body.items[i].edmPreview[0])</span>
                 } catch (TypeError) {
-                    //console.log(Error);
+<span class="cstat-no" title="statement not covered" >                    callback('No images found');</span>
+<span class="cstat-no" title="statement not covered" >                    break</span>
                 }
             }
-<span class="cstat-no" title="statement not covered" >            if (typeof piclist !== 'undefined' &amp;&amp; piclist.length &gt; 0){</span>
+<span class="cstat-no" title="statement not covered" >            if (typeof piclist !== 'undefined' &amp;&amp; piclist.length &gt; 0) {</span>
 <span class="cstat-no" title="statement not covered" >                callback(null, piclist);</span>
-            } else {
-<span class="cstat-no" title="statement not covered" >                callback('No images found');</span>
-            }
-            
-        } else {<span class="cstat-no" title="statement not covered" >callback('No images found');}</span>
-  
+            } 
+&nbsp;
+        }
+&nbsp;
     });
-  
+&nbsp;
 };</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun May 13 2018 10:30:45 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 14 2018 10:56:35 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="prettify.js"></script>

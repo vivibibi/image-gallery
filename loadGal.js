@@ -6,7 +6,6 @@ var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@eur
 
 module.exports.loadGal = function(user, callback) {
     try {
-
         MongoClient.connect(uri, function(err, client) {
             global.gallery_val = '';
             const gallery = client.db("Users").collection("Gallery");
@@ -19,21 +18,12 @@ module.exports.loadGal = function(user, callback) {
 
             });
             client.close();
+
             setTimeout(function() {
                 callback(gallery_val)
             }, 1000);
-
-
-
         });
 
-
-        /*var readalbum = fs.readFileSync('album.json');
-        var piclist = JSON.parse(readalbum);
-        
-        for (var i = 0; i < piclist.length; i++) {
-            
-        }*/
     } catch (SyntaxError) {
         gallery_val += '<font size="6"><b>No albums<b></font>';
         callback(gallery_val)
