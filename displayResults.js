@@ -23,13 +23,13 @@ module.exports.displayResults = function(errorMessage, results) {
     } else {
         global.formatThumbs = '<br>';
         global.listofimgs = [];
-        global.galThumbs = '<br>';
+        global.galThumbs = '';
 
         for (i = 0; i < results.length; i++) {
            listofimgs.push(results[i]);
-           galThumbs += '<img class=thumbnails src=' + results[i] + '>';
-           formatThumbs += '<img class=thumbnails src=' + results[i] + '><form id=favForm method=GET action=/favorite>'+
-           '<button name=favorite id=favorite value=' + i + '' + ' type=submit>❤</button></form>';
+           galThumbs +=  '<div id="box' + i + '" class="boxes">' + '<img class=thumbnails id=pic'+ i + '  src=' + results[i] + '> </div>';
+           formatThumbs += '<img class=thumbnails id=pic'+ i + '  src=' + results[i] + '><form id=favForm method=GET action=/favorite>'+
+           '<button name=favorite id=favorite value=' + i + ' type=submit>❤</button></form>';
         }
 
         var readresults = fs.readFileSync('results.json');
