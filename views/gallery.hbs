@@ -1,4 +1,4 @@
-<!--Used in gallery.json -->
+
 
 <!DOCTYPE html>
 <html>
@@ -8,6 +8,13 @@
 	<title>{{title}}</title>
 	<link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
-    <a id='mainBut' href="/" class="button">Main Page</a>
+	<div id="menuDiv">
+        <a id='menuHome' href='/' class='menuBut'>Main Page</a>
+        <a id='menuGal' href="/gallery" class="menuBut">Gallery</a>
+        <a id='menuFav' href="/favorite" class="menuBut">Favorite</a>
+    </div>
    
+   <body id="galBody"> 
+      <div> {{{album}}}</div>
+   </body>
 </html>
