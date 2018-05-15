@@ -256,18 +256,6 @@ img {
     background-size: cover;
 }
 
-/*#greyBack {
-    font: 50px "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    color: black;
-    top: 80px;
-    text-align: initial;
-    padding-top: 80px;
-    padding-bottom: 40px;
-    padding-right: 20px;
-    padding-left: 20px;
-    display: inline-block;
-    float: left;
-}*/
 
 #greyBack {
     /*background-attachment: fixed;*/
@@ -300,17 +288,6 @@ img {
     background: rgba(0, 0, 0, 0.5);
     transition: 0.5s;
 }
-/*
-.thumbnails {
-    width: 20%;
-    height: 45%;
-    display: inline-block;
-    float: left;
-    padding-bottom: 45px;
-    padding-left: 45px;
-    padding-top: 25px;
-}
-*/
 
 
 /* width */
@@ -339,26 +316,6 @@ img {
 /*term1 stuff*/
 
 
-#images {
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 0px;
-    bottom: 0px;
-    margin: auto;
-}
-
-/*#greyBack {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    top: 0px;
-    left: 0px;
-    background-color: black;
-    opacity: 0;
-    transition: all 0.5s;
-    z-index: -1;
-}*/
 
 .boxes {
     position: relative;
