@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">54.55% </span>
+        <span class="strong">46.15% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/11</span>
+        <span class='fraction'>6/13</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">20% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/4</span>
+        <span class='fraction'>1/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">54.55% </span>
+        <span class="strong">46.15% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/11</span>
+        <span class='fraction'>6/13</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -66,7 +66,13 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -80,10 +86,16 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var MongoClient = require('mongodb').MongoClient;
@@ -91,20 +103,26 @@ var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@eur
 &nbsp;
 &nbsp;
 module.exports.loadGal = function(user, callback) {
-    global.gallery_val = '';
+    global.gallery_val = "&lt;body onclick='getID(this.id)'&gt;&lt;div id='images'&gt;";
     MongoClient.connect(uri, <span class="fstat-no" title="function not covered" >fu</span>nction(err, client) {
         const gallery = <span class="cstat-no" title="statement not covered" >client.db("Users").collection("Gallery");</span>
 <span class="cstat-no" title="statement not covered" >        gallery.find({</span>
             username: user
         }).forEach(<span class="fstat-no" title="function not covered" >fu</span>nction(error, doc) {
-<span class="cstat-no" title="statement not covered" >            gallery_val += '&lt;div id=galDiv &lt;br&gt; &lt;b&gt;' + error.title + '&lt;/b&gt;&lt;br&gt;&lt;div id=galDivPic &lt;img id=galDivPic src=' + error.img_links + ' &lt;/div&gt; &lt;/div&gt;';</span>
+<span class="cstat-no" title="statement not covered" >            gallery_val += '&lt;div&gt;' + error.title + '&lt;/div&gt;' + error.img_links;</span>
         });
+<span class="cstat-no" title="statement not covered" >        setTimeout(<span class="fstat-no" title="function not covered" >fu</span>nction() {</span>
+<span class="cstat-no" title="statement not covered" >            gallery_val += "&lt;img id='bin' src='bin.jpg' /&gt;&lt;/div&gt;&lt;div id='greyBack'&gt;&lt;/div&gt;&lt;a id='mainBut' href='/' class='button'&gt;Main Page&lt;/a&gt;&lt;script type='text/javascript'&gt; var greyBack = document.getElementById('greyBack'), defLeft = null, defRight = null, defTop = null, defBottom = null, defMargin = null, currentDiv = null, bin = document.getElementById('bin'), previousDiv = null; function getID(e) { e = e || window.event; e = e.target || e.srcElement; if (e.className == 'boxes') { zoomIn(e); currentDiv = e } else if (e.id == 'greyBack') { zoomOut(currentDiv); } else if (e.id == 'bin') { zoomOut(currentDiv); removeImage(currentDiv); } } function zoomIn(element) { defLeft = element.style.left, defRight = element.style.right, defTop = element.style.top, defBottom = element.style.bottom, defMargin = element.style.margin; element.style.position = 'absolute'; element.style.transform = 'scale(5)'; element.style.zIndex = '1'; element.style.left = '0px'; element.style.right = '0px'; element.style.top = '0px'; element.style.bottom = '0px'; element.style.margin = 'auto'; greyBack.style.zIndex = '0'; greyBack.style.opacity = '0.75'; bin.style.display = 'block' } function zoomOut(element) { element.style.position = 'relative'; element.style.transform = 'scale(1)'; element.style.zIndex = '0'; element.style.left = defLeft; element.style.right = defRight; element.style.top = defTop; element.style.bottom = defBottom; element.style.margin = defMargin; greyBack.style.zIndex = '-1'; greyBack.style.opacity = '0'; bin.style.display = 'none' } function removeImage(e) { e.parentNode.removeChild(e); } &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;";</span>
+   
+        }, 1000);
+        
 <span class="cstat-no" title="statement not covered" >        client.close();</span>
         
     });
     setTimeout(<span class="fstat-no" title="function not covered" >fu</span>nction() {
-<span class="cstat-no" title="statement not covered" >        callback(gallery_val)</span>
-        }, 2000);
+<span class="cstat-no" title="statement not covered" >             callback(gallery_val)</span>
+        }, 3000);
+&nbsp;
 &nbsp;
 }</pre></td></tr>
 </table></pre>
@@ -112,7 +130,7 @@ module.exports.loadGal = function(user, callback) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 14 2018 14:38:56 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 15 2018 14:47:16 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="prettify.js"></script>

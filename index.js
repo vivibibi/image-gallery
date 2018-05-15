@@ -8,16 +8,16 @@ var greyBack = document.getElementById("greyBack"),
     bin = document.getElementById("bin"),
     previousDiv = null;
 
-function getID(element) {
-	element = element || window.event;
-	element = element.target || e.srcElement;
+function getID(e) {
+	e = e || window.event;
+	e = e.target || e.srcElement;
 	
-	if (element.className == "boxes") {
-		zoomIn(element);
-		currentDiv = element
-	} else if (element.id == "greyBack") {
+	if (e.className == "thumbnails") {
+		zoomIn(e);
+		currentDiv = e
+	} else if (e.id == "greyBack") {
 		zoomOut(currentDiv);
-	} else if (element.id == "bin") {
+	} else if (e.id == "bin") {
         zoomOut(currentDiv);
         removeImage(currentDiv);
     }
