@@ -1,20 +1,24 @@
-const fs = require('fs');
-
+var MongoClient = require('mongodb').MongoClient;
+var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@europeanaimaging-porog.mongodb.net/Users?retryWrites=true";
 /** 
  * inserts all the favorited images into HTML code
  */
 
-module.exports.loadImgs = function() {
+module.exports.loadImgs = function(user, callback) {
+    global.favo_val = '';
+    MongoClient.connect(uri, function(err, client) {
+        const gallery = client.db("Users").collection("Favorites");
+        gallery.find({
+            username: user
+        }).forEach(function(error, doc) {
+            favo_val += '<img src=' + error.img_link + ' <br>';
+        });
+        client.close();
+        
 
-    var readimgs = fs.readFileSync('imgs.json');
-    var favlist = JSON.parse(readimgs);
-    var fav_val = '';
-
-    for (var i = 0; i < favlist.length; i++) {
-        fav_val += '<img src=' + favlist[i] + ' <br>';
-    };
-
-    return fav_val
-
+    });
+    setTimeout(function() {
+            callback(favo_val)
+        }, 2000);
 
 }

@@ -1,12 +1,16 @@
 const fs = require('fs');
+var MongoClient = require('mongodb').MongoClient;
+
+var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@europeanaimaging-porog.mongodb.net/Users?retryWrites=true";
+
 
 var album = {
     title: 'title',
     imgs: 'imgs',
 };
 
-module.exports.addAlbum = (title, imgs) => {
-    console.log('Adding album');
+module.exports.addAlbum = (title, imgs, user) => {
+
 
     var imglist = []
 
@@ -15,16 +19,18 @@ module.exports.addAlbum = (title, imgs) => {
 
     imglist.push(album);
 
-    var readalbum = fs.readFileSync('album.json');
+    MongoClient.connect(uri, function(err, client) {
 
-    if (readalbum != '') {
-        var data = JSON.parse(readalbum);
 
-        for (var i = 0; i < data.length; i++) {
-            imglist.push(data[i])
-        };
-    };
-    
-    fs.writeFileSync('album.json', JSON.stringify(imglist));
+        const gallery = client.db("Users").collection("Gallery");
+        gallery.insert({
+            username: user,
+            img_links: imgs,
+            title: title
+        });
+
+
+        client.close();
+    });
     return imglist
 };
