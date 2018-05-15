@@ -116,8 +116,6 @@ describe("testing loadGal.js", () => {
     });
 });
 
-
-
 var account = validateCreateAccount.createAccount("coolguy", "verycool");
 var mockacc = { username: 'coolguy', password: 'verycool' }
 
@@ -158,3 +156,4 @@ describe("testing checkPassword.js", () => {
         validateCheckPassword.checkPassword('y', "verycool");
     });
 });
+

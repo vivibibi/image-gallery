@@ -3,6 +3,7 @@ var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@eur
 /** 
  * inserts all the favorited images into HTML code
  */
+
 module.exports.loadImgs = function(user, callback) {
     global.favo_val = '';
     MongoClient.connect(uri, function(err, client) {

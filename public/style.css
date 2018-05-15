@@ -249,8 +249,9 @@ input:focus, textarea:focus, select:focus{
 body {
     height: 100%;
     background-image: url('pa.jpg');
-    background-size: 1400px;
     background-attachment: fixed;
+    overflow: scroll;
+}
 }
 
 #formSave {
@@ -313,33 +314,30 @@ img {
 
 /*gallery*/
 
-#galBody {
-    background-image: url('ab.jpg');
-    background-size: 1000px;
+#images {
+    top: 50px;
+    background-size: cover;
     background-attachment: fixed;
-}
-
-#galDiv {
-    font: 50px "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    color: black;
-    top: 80px;
-    text-align: initial;
     padding-top: 80px;
-    padding-bottom: 40px;
-    padding-right: 20px;
-    padding-left: 20px;
-    display: inline-block;
-    float: left;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-#galDivPic {
+
+#greyBack {
+    /*background-attachment: fixed;*/
+    position: absolute;
     background: rgba(0, 0, 0, 0.5);
-    border: 6px double black;
-    padding-bottom: 40px;
     padding-top: 20px;
-    height: 90vh;
-    width: 90vw;
-    overflow-y: scroll;
+    height: 100vh;
+    width: 100vw;
+
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    transition: all 0.5s;
+    z-index: -1;
 }
 
 
@@ -358,7 +356,7 @@ img {
     background: rgba(0, 0, 0, 0.5);
     transition: 0.5s;
 }
-
+/*
 .thumbnails {
     width: 20%;
     height: 45%;
@@ -368,7 +366,7 @@ img {
     padding-left: 45px;
     padding-top: 25px;
 }
-
+*/
 
 
 /* width */
@@ -393,3 +391,43 @@ img {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+/*term1 stuff*/
+
+
+#images {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+}
+
+
+
+.boxes {
+    position: relative;
+    width: 50px;
+    height: 75px;
+    padding: 5px;
+    margin: 20px;
+    background-color: grey;
+    display: inline-block;
+    transition: all 0.5s;
+    z-index: 0;
+}
+
+#bin {
+    position:absolute;
+    width:50px;
+    height:50px;
+    left:0px;
+    right:-290px;
+    top:-475px;
+    bottom:0px;
+    margin:auto;
+    z-index: 1;
+    display:none;
+}
+
