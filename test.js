@@ -55,11 +55,6 @@ describe("testing loadImgs.js", () => {
 	})
 })
 
-describe("testing displayFav.js", () => {
-	test("adds the html of the favorite page to the actual list of favorited imgs", () => {
-		expect(validateDisplayFav.displayFav()).toContain('Main Page');
-	})
-})
 
 describe("testing loadGal.js", () => {
 	test("adds html to the raw links of the albums", () => {
@@ -67,12 +62,51 @@ describe("testing loadGal.js", () => {
 	})
 })
 
-describe("testing displayGal.js", () => {
-	test("combines the page's HTML with the albums' HTML", () => {
-		expect(validateDisplayGal.displayGal()).toContain("rel='stylesheet'");
-	})
-})
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 90826887a1bbd6d8ea3cd83beecb8e99f1cca5fe
 describe("testing displayResults.js", () => {
 	test("combines the page's HTML with the albums' HTML", () => {
 		setTimeout(function() {
@@ -82,6 +116,7 @@ describe("testing displayResults.js", () => {
         }, 4000);
 		
 	})
+<<<<<<< HEAD
 =======
 var validateAddAlbum = require("./addAlbum");
 var validateFavPic = require("./favPic");
@@ -167,3 +202,20 @@ describe("testing displayResults.js", () => {
 		
 	})
 >>>>>>> a4828f95d190217bfa10b3d0d45632f205c76279
+=======
+})
+
+
+describe("testing displayFav.js", () => {
+	test("adds the html of the favorite page to the actual list of favorited imgs", () => {
+		expect(validateDisplayFav.displayFav()).toContain('Main Page');
+	})
+})
+
+
+describe("testing displayGal.js", () => {
+	test("combines the page's HTML with the albums' HTML", () => {
+		expect(validateDisplayGal.displayGal()).toContain("rel='stylesheet'");
+	})
+})
+>>>>>>> 90826887a1bbd6d8ea3cd83beecb8e99f1cca5fe
