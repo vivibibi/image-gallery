@@ -6,6 +6,11 @@
     "test": "jest --coverage",
     "start": "node server.js"
   },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

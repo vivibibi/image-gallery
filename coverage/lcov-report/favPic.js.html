@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">70% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>9/12</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>1/2</span>
+        <span class='fraction'>7/10</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
-        <span class="quiet">Functions</span>
-        <span class='fraction'>1/1</span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">50% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">70% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/12</span>
+        <span class='fraction'>7/10</span>
       </div>
     </div>
     <p class="quiet">
@@ -70,9 +70,9 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -83,22 +83,20 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const fs = require('fs');
+var MongoClient = require('mongodb').MongoClient;
+var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@europeanaimaging-porog.mongodb.net/Users?retryWrites=true";
 &nbsp;
 /**
  * Saves a single image when you click on the favorite button to the favorites album (imgs.json)
@@ -106,31 +104,27 @@
  * @requires fs
  */
 &nbsp;
-module.exports.favPic = (imgs) =&gt; {
-   console.log('Favorite picture');
-&nbsp;
-   var photolist = []
-&nbsp;
-   photolist.push(imgs);
-&nbsp;
-   var readimgs = fs.readFileSync('imgs.json');
-&nbsp;
-   <span class="missing-if-branch" title="if path not taken" >I</span>if (readimgs != '') {
-       var dataimg = <span class="cstat-no" title="statement not covered" >JSON.parse(readimgs);</span>
-<span class="cstat-no" title="statement not covered" >       for (var i = 0; i &lt; dataimg.length; i++) {</span>
-<span class="cstat-no" title="statement not covered" >           photolist.push(dataimg[i])</span>
-       };
-   };
-   
-   fs.writeFileSync('imgs.json', JSON.stringify(photolist));
-   return photolist
+module.exports.favPic = (imgs, user) =&gt; {
+    var db_entry = {
+        img_link: imgs,
+        username: user
+    }
+    MongoClient.connect(uri, <span class="fstat-no" title="function not covered" >fu</span>nction(err, client) {
+        const fav = <span class="cstat-no" title="statement not covered" >client.db("Users").collection("Favorites");</span>
+<span class="cstat-no" title="statement not covered" >        fav.insert({</span>
+            img_link: imgs,
+            username: user
+        });
+<span class="cstat-no" title="statement not covered" >        client.close();</span>
+    });
+    return db_entry
 };</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu May 10 2018 09:09:32 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 14 2018 14:38:56 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="prettify.js"></script>

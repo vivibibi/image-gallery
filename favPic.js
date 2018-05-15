@@ -8,38 +8,18 @@ var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@eur
  * @requires fs
  */
 
-module.exports.favPic = (imgs) => {
-    console.log('Favorite picture');
-
-    var photolist = []
-
-    photolist.push(imgs);
-
+module.exports.favPic = (imgs, user) => {
+    var db_entry = {
+        img_link: imgs,
+        username: user
+    }
     MongoClient.connect(uri, function(err, client) {
-
-
         const fav = client.db("Users").collection("Favorites");
         fav.insert({
             img_link: imgs,
-            username: null
+            username: user
         });
-
-
-        
+        client.close();
     });
-
-    client.close();
-    /*
-    var readimgs = fs.readFileSync('imgs.json');
-
-    if (readimgs != '') {
-        var dataimg = JSON.parse(readimgs);
-        for (var i = 0; i < dataimg.length; i++) {
-            photolist.push(dataimg[i])
-        };
-    };
-
-    fs.writeFileSync('imgs.json', JSON.stringify(photolist));
-    */
-    return photolist
+    return db_entry
 };

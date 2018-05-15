@@ -1,6 +1,8 @@
 
 /*search.hbs */
 
+
+
 h1 {
     position: absolute;
     text-align: center;
@@ -20,7 +22,12 @@ h1 {
     1.5px 1px 0 #000;
 }
 
-
+#usern {
+    float:left;
+    display:inline-block;
+    color:white;
+    padding:10px;
+}
 
 /*login box*/
 
