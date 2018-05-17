@@ -8,11 +8,14 @@ const bodyParser = require('body-parser');
 const addAlbum = require('./addAlbum.js');
 const getThumbs = require('./getThumbnails.js');
 const favPic = require('./favPic.js');
-const displayRe = require('./displayResults.js');
 
 const loadGal = require('./loadGal.js');
 const checkPassword = require('./checkPassword.js');
 const loadImgs = require('./loadImgs.js');
+
+
+var MongoClient = require('mongodb').MongoClient;
+var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@europeanaimaging-porog.mongodb.net/Users?retryWrites=true";
 
 
 
@@ -49,46 +52,75 @@ app.get('/', (request, response) => {
     });
 });
 
+/**
+ * Posts whenever a user logs in
+ */
+
 app.post('/', (req, res) => {
+    MongoClient.connect(uri, function(err, client) {
+        const users = client.db("Users").collection("Users");
+        users.find({
+            username: res.req.body.uname
+        }).forEach(function(error, doc) {
+            if (checkPassword.checkPassword(error.password, res.req.body.pswd) === true) {
+                global.session_user = res.req.body.uname
+            }
 
-    checkPassword.checkPassword(res.req.body.uname, res.req.body.pswd, (result) => {
-        if (result === true) {
-            global.session_user = res.req.body.uname
-        }
+        });
+        client.close();
 
+    });
+    setTimeout(function() {
         res.render('search.hbs', {
             title: 'Home Page',
             username: session_user
 
         });
-    })
+    }, 2000);
 
 });
+
 
 /**
  * Routes the /results path
  */
 app.get('/results', (request, response) => {
-    /**
-     * Grabs the query from the GET response
-     */
-    nquery = response.req.query.query;
-
     /** 
      * get picture links from the query
      */
-    getThumbs.getThumbnails(nquery, (errorMessage, results) => {
-        global.galThumbs = results;
-        global.searchedpics = displayRe.displayResults(errorMessage, results);
+    getThumbs.getThumbnails(response.req.query.query, (errorMessage, results) => {
+        global.formatThumbs = '<br>';
+        /** 
+         * the URLs will be encapsulated in HTML code and returned
+         */
+        if (results) {
+            global.listofimgs = [];
+            global.galThumbs = '<br>';
+            for (i = 0; i < results.length; i++) {
+                listofimgs.push(results[i]);
+                galThumbs += '<div id="box' + i + '" class="boxes">' + '<img class=thumbnails id=pic'+ i + '  src=' + results[i] + '> </div>';
+                formatThumbs += '<img class=thumbnails id=pic'+ i + '  src=' + results[i] + '><form id=favForm method=GET action=/favorite>'+
+'<button name=favorite id=favorite value=' + i + ' type=submit>❤</button></form>';
+            }
 
+        } else {
+            /** 
+             * if there's no pictures returned, an error message will be displayed
+             */
+            formatThumbs += '<h1>' + errorMessage + '</h1>';
+
+        }
         /** 
          * the HTML code is sent to be displayed
          */
-         response.render('results.hbs', {
-            title: 'Results',
-            pictures: searchedpics
+        setTimeout(function() {
+            response.render('results.hbs', {
+                title: 'Results',
+                pictures: formatThumbs
 
-        });
+            });
+        }, 2000);
+
 
     });
 
@@ -105,6 +137,9 @@ app.get('/gallery', (request, response) => {
     if (request.query.title != undefined) {
         addAlbum.addAlbum(request.query.title, galThumbs, session_user);
     }
+    /** 
+     * the HTML code is sent to be displayed
+     */
 
     loadGal.loadGal(session_user, (result) => {
         response.render('gallery.hbs', {
@@ -113,13 +148,10 @@ app.get('/gallery', (request, response) => {
 
         });
     });
-    
- 
 
 
-    /** 
-     * the HTML code is sent to be displayed
-     */
+
+
 
 
 });
@@ -138,17 +170,16 @@ app.get('/favorite', (request, response) => {
         favPic.favPic(listofimgs[request.query.favorite], session_user);
     }
     loadImgs.loadImgs(session_user, (result) => {
-      response.render('favorite.hbs', {
+        response.render('favorite.hbs', {
             username: session_user,
             favorites: result
         });
     });
-    
-    
+
+
 
 });
 
-//saving/pushing favorite pictures//
 
 
 /** 
@@ -158,5 +189,3 @@ app.listen(port, () => {
     console.log(`Server is up on the port ${port}`);
 
 });
-
-
