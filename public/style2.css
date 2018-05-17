@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 .button {
 	display: inline-block;
 	text-transform: uppercase;
@@ -40,46 +40,7 @@ body {
 	background: rgba(0,0,0,0.7);
 }
 
-=======
-.button {
-	display: inline-block;
-	text-transform: uppercase;
-	letter-spacing: 5px;
-	color: white;
-	border: 2.5px solid white;
-	padding:10px;
 
-	text-align: center;
-	background: rgba(0,0,0,0.5);
-	transition: 0.5s;
-}
 
-#mainBut {
-	text-decoration: none;
-	font-family: sans-serif;
-	position: fixed;
-}
 
-img{
-	width:20%;
-	height:45%;
-	display: inline-block;
-	float: left;
-	padding: 15px;
-	padding-top: 60px;
-}
 
-body {
-	height: 100%;
-	background-image: url('fav.png');
-	background-size: cover;
-	background-position: center;
-	background-attachment: fixed; 
-	top:-100px;
-}
-
-.button:hover {
-	background: rgba(0,0,0,0.7);
-}
-
->>>>>>> 32fc24eb32c4f6a1a9693021e0d7bb5f70634625

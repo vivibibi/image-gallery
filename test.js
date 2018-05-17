@@ -2,10 +2,7 @@ var validateAddAlbum = require("./addAlbum");
 var validateFavPic = require("./favPic");
 var validateGetThumbnails = require("./getThumbnails");
 var validateloadImgs = require("./loadImgs.js");
-
 var validateLoadGal = require("./loadGal.js");
-
-
 var validateCreateAccount = require("./createAccount.js");
 var validateCheckPassword = require("./checkPassword.js");
 
@@ -13,7 +10,8 @@ var albums = validateAddAlbum.addAlbum("title", "url", 'coolguy');
 
 
 var MongoClient = require('mongodb').MongoClient;
-var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@europeanaimaging-porog.mongodb.net/Users?retryWrites=true";
+
+var dbCred = require("./databaseCred.js");
 
 
 describe("testing addAlbum", () => {
@@ -25,7 +23,7 @@ describe("testing addAlbum", () => {
     });
     test("album is in database", () => {
 
-        MongoClient.connect(uri, function(err, client) {
+        MongoClient.connect(dbCred.uri, function(err, client) {
             const fav = client.db("Users").collection("Gallery");
             fav.find({
                 username: 'coolguy'
@@ -43,17 +41,17 @@ describe("testing addAlbum", () => {
     });
 })
 
-var fav = validateFavPic.favPic('https://www.europeana.eu/api/v2/thumbnail-by-url.json?uri=http%3A%2F%2Fzudusilatvija.lv%2Fstatic%2Ffiles%2F16%2F08%2F27%2F000060.png&size=LARGE&type=IMAGE', "Guest");
+var fav = validateFavPic.favPic('https://www.europeana.eu/api/v2/thumbnail-by-url.json?dbCred.uri=http%3A%2F%2Fzudusilatvija.lv%2Fstatic%2Ffiles%2F16%2F08%2F27%2F000060.png&size=LARGE&type=IMAGE', "Guest");
 
 
 describe("testing fav", () => {
     test("a valid favPic", () => {
-        MongoClient.connect(uri, function(err, client) {
+        MongoClient.connect(dbCred.uri, function(err, client) {
             const fav = client.db("Users").collection("Favorites");
             fav.find({
                 username: 'guest'
             }).forEach(function(error, doc) {
-                expect(error.img_link).toContain('https://www.europeana.eu/api/v2/thumbnail-by-url.json?uri=http%3A%2F%2Fzudusilatvija.lv%2Fstatic%2Ffiles%2F16%2F08%2F27%2F000060.png&size=LARGE&type=IMAGE');
+                expect(error.img_link).toContain('https://www.europeana.eu/api/v2/thumbnail-by-url.json?dbCred.uri=http%3A%2F%2Fzudusilatvija.lv%2Fstatic%2Ffiles%2F16%2F08%2F27%2F000060.png&size=LARGE&type=IMAGE');
 
 
             });
@@ -116,8 +114,6 @@ describe("testing loadGal.js", () => {
     });
 });
 
-
-
 var account = validateCreateAccount.createAccount("coolguy", "verycool");
 var mockacc = { username: 'coolguy', password: 'verycool' }
 
@@ -128,7 +124,7 @@ describe('testing createAccount.js', () => {
     });
 
     test('account exists within the database', () => {
-        MongoClient.connect(uri, function(err, client) {
+        MongoClient.connect(dbCred.uri, function(err, client) {
             const users = client.db("Users").collection("Users");
             users.find({
                 username: "coolguy"
@@ -158,3 +154,4 @@ describe("testing checkPassword.js", () => {
         validateCheckPassword.checkPassword('y', "verycool");
     });
 });
+

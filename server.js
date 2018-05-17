@@ -15,8 +15,7 @@ const loadImgs = require('./loadImgs.js');
 
 
 var MongoClient = require('mongodb').MongoClient;
-var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@europeanaimaging-porog.mongodb.net/Users?retryWrites=true";
-
+var dbCred = require("./databaseCred.js");
 
 
 var app = express();
@@ -57,7 +56,7 @@ app.get('/', (request, response) => {
  */
 
 app.post('/', (req, res) => {
-    MongoClient.connect(uri, function(err, client) {
+    MongoClient.connect(dbCred.uri, function(err, client) {
         const users = client.db("Users").collection("Users");
         users.find({
             username: res.req.body.uname
@@ -98,9 +97,9 @@ app.get('/results', (request, response) => {
             global.galThumbs = '<br>';
             for (i = 0; i < results.length; i++) {
                 listofimgs.push(results[i]);
-                galThumbs += '<img class=thumbnails src=' + results[i] + '>';
-                formatThumbs += '<img class=thumbnails src=' + results[i] + '><form id=favForm method=GET action=/favorite>' +
-                    '<button name=favorite id=favorite value=' + i + '' + ' type=submit>❤</button></form>';
+                galThumbs += '<div id="box' + i + '" class="boxes">' + '<img class=thumbnails id=pic'+ i + '  src=' + results[i] + '> </div>';
+                formatThumbs += '<img class=thumbnails id=pic'+ i + '  src=' + results[i] + '><form id=favForm method=GET action=/favorite>'+
+'<button name=favorite id=favorite value=' + i + ' type=submit>❤</button></form>';
             }
 
         } else {
