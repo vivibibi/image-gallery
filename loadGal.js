@@ -1,10 +1,9 @@
 var MongoClient = require('mongodb').MongoClient;
-var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@europeanaimaging-porog.mongodb.net/Users?retryWrites=true";
-
+var dbCred = require("./databaseCred.js");
 
 module.exports.loadGal = function(user, callback) {
     global.gallery_val = "<body onclick='getID(this.id)'><div id='images'>";
-    MongoClient.connect(uri, function(err, client) {
+    MongoClient.connect(dbCred.uri, function(err, client) {
         const gallery = client.db("Users").collection("Gallery");
         gallery.find({
             username: user
