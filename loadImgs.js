@@ -1,7 +1,12 @@
 var MongoClient = require('mongodb').MongoClient;
 var dbCred = require("./databaseCred.js");
-/** 
- * inserts all the favorited images into HTML code
+
+/**
+ * loads all the users favorite images from the database
+ * @param {string} user       - the user's username
+ * @param {function} callback - returns the results of the retrieval from the database
+ * @requires mongodb
+ * @requires ./databaseCred.js 
  */
  
 module.exports.loadImgs = function(user, callback) {
