@@ -14,15 +14,18 @@
         <a id='menuGal' href="/gallery" class="menuBut">Gallery</a>
         <a id='menuFav' href="/favorite" class="menuBut">Favorite</a>
     </div>
+    
 <form id='form' action='/results' method='GET'>
     <input id='searchText' type='text' name='query' placeholder='Search' />
     <input class='button' id='subBut' type='submit' value='Submit'>
 </form>
 
+<div id='formDiv'>
 <form method='GET' action='/gallery' id='formSave'>
     <input type='text' id='title' name='title' placeholder='Insert a title' />
     <input name='save' id='save' value='save' type='submit' />
 </form>
+</div>
 </body>
 
 <div id='divv'>{{{pictures}}} </div>
