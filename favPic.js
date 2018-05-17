@@ -1,10 +1,12 @@
-const fs = require('fs');
 var MongoClient = require('mongodb').MongoClient;
 var dbCred = require("./databaseCred.js");
 /**
- * Saves a single image when you click on the favorite button to the favorites album (imgs.json)
+ * Saves a single image when you click on the favorite button to the database
  * @param {string} imgs - The URL of an image
- * @requires fs
+ * @param {string} user - the username of the user
+ * @requires mongodb
+ * @requires ./databaseCred.js
+ * @returns {object} db_entry - an object that contains an image and username
  */
 
 module.exports.favPic = (imgs, user) => {
