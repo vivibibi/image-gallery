@@ -41,7 +41,7 @@ var thumbs = [],
 
 app.get('/', (request, response) => {
     /**
-     * Displays the main page
+     * Displays the home page depending on the user (default is guest)
      */
 
     response.render('search.hbs', {
@@ -52,10 +52,13 @@ app.get('/', (request, response) => {
 });
 
 /**
- * Posts whenever a user logs in
+ * Completes a post request whenever a user signs in
  */
 
 app.post('/', (req, res) => {
+    /**
+     * Connects to the user collection and retrieves the password from the database and verifies that the passwords match
+     */
     MongoClient.connect(dbCred.uri, function(err, client) {
         const users = client.db("Users").collection("Users");
         users.find({
@@ -67,8 +70,12 @@ app.post('/', (req, res) => {
 
         });
         client.close();
-
+    
     });
+    
+    /**
+     * Renders a new homepage with the updated user
+     */
     setTimeout(function() {
         res.render('search.hbs', {
             title: 'Home Page',
@@ -162,7 +169,7 @@ app.get('/gallery', (request, response) => {
 
 app.get('/favorite', (request, response) => {
 
-    /** 
+    /**
      * if user clicks the "favorite" button, the image will be added to favorite
      */
     if (request.query.favorite != undefined) {
