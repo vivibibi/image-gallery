@@ -26,5 +26,13 @@
     "babel-jest": "^22.4.3",
     "jest": "^22.4.3"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnguyen19/image-gallery.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dnguyen19/image-gallery/issues"
+  },
+  "homepage": "https://github.com/dnguyen19/image-gallery#readme",
   "description": ""
 }

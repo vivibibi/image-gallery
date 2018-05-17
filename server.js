@@ -15,8 +15,7 @@ const loadImgs = require('./loadImgs.js');
 
 
 var MongoClient = require('mongodb').MongoClient;
-var uri = "mongodb+srv://mongodb-stitch-europeana-bdhxh:whydoesntmongodbwork@europeanaimaging-porog.mongodb.net/Users?retryWrites=true";
-
+var dbCred = require("./databaseCred.js");
 
 
 var app = express();
@@ -57,7 +56,7 @@ app.get('/', (request, response) => {
  */
 
 app.post('/', (req, res) => {
-    MongoClient.connect(uri, function(err, client) {
+    MongoClient.connect(dbCred.uri, function(err, client) {
         const users = client.db("Users").collection("Users");
         users.find({
             username: res.req.body.uname
