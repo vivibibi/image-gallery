@@ -104,7 +104,7 @@ app.get('/results', (request, response) => {
             global.galThumbs = '<br>';
             for (i = 0; i < results.length; i++) {
                 listofimgs.push(results[i]);
-                galThumbs += '<div id="box' + i + '" class="boxes">' + '<img class=thumbnails id=pic'+ i + '  src=' + results[i] + '> </div>';
+                galThumbs += '<img class=thumbnails id=pic'+ i + '  src=' + results[i] + '>';
                 formatThumbs += '<img class=thumbnails id=pic'+ i + '  src=' + results[i] + '><form id=favForm method=GET action=/favorite>'+
 '<button name=favorite id=favorite value=' + i + ' type=submit>❤</button></form>';
             }
