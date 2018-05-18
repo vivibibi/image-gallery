@@ -176,7 +176,8 @@ input:focus, textarea:focus, select:focus{
     border-radius: 10px;
     padding: 5px;
 }
-#body {
+
+#searchBody {
     background-image: url('bg.jpg');
     background-size: cover;
     background-position: center;
@@ -197,7 +198,9 @@ input:focus, textarea:focus, select:focus{
     width:100vw;
     height: 38px;
     background-color: rgba(30, 30, 30, 0.8);
+    position: fixed;
 }
+
 .menuBut {
     display: inline;
     text-transform: uppercase;
@@ -210,10 +213,12 @@ input:focus, textarea:focus, select:focus{
     transition: 0.5s;
     text-decoration: none;
 }
+
 .menuBut:hover{
     color: black;
     background-color: white ;
 }
+
 #usern {
     position: fixed;
     top:-10px;
@@ -226,10 +231,13 @@ input:focus, textarea:focus, select:focus{
 #resultsBody {
     height: 100%;
     background-image: url('pa.jpg');
-    background-attachment: fixed;
-    overflow: scroll;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    top:-100px;
+    margin:0;
 }
-}
+
 #formSave {
     position: absolute;
     width: 250px;
@@ -240,6 +248,7 @@ input:focus, textarea:focus, select:focus{
     position: absolute;
     left:0;
     right:0;
+    top:10px;
 }
 #divv {
     position: absolute;
@@ -285,6 +294,16 @@ img {
 }
 /*gallery*/
 
+#images {
+    top: 50px;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #greyBack {
     /*background-attachment: fixed;*/
     position: fixed;
@@ -298,6 +317,40 @@ img {
     transition: all 0.5s;
     z-index: -1;
 }
+
+body {
+    height: 100%;
+    background-image: url('ab.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    top:-100px;
+    margin:0;
+}
+
+#galDiv {
+    position: absolute;
+    width: 100%;
+    height: 93%;
+    left: 0;
+    right: 0;
+    top: 50;
+    bottom: 0;
+    overflow-y: scroll;
+    border-top: 3px double white;    
+}
+
+#favBody {
+    height: 100%;
+    background-image: url('fav.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    top:-100px;
+    margin:0;
+}
+
+
 /*class for button*/
 .button {
     display: inline-block;
@@ -310,6 +363,47 @@ img {
     background: rgba(0, 0, 0, 0.5);
     transition: 0.5s;
 }
+/*
+.thumbnails {
+    width: 150px;
+    height: 180px;
+    display: inline-block;
+    float: left;
+    padding-bottom: 45px;
+    padding-left: 45px;
+    padding-top: 25px;
+}
+<<<<<<< HEAD
+
+/*favorites*/
+.button {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: white;
+    border: 2.5px solid white;
+    padding:10px;
+
+    text-align: center;
+    background: rgba(0,0,0,0.5);
+    transition: 0.5s;
+}
+
+#mainBut {
+    text-decoration: none;
+    font-family: sans-serif;
+    position: fixed;
+}
+
+img{
+    width:20%;
+    height:45%;
+    display: inline-block;
+    float: left;
+    padding: 15px;
+    padding-top: 60px;
+}
+
 
 
 /* width */
@@ -328,9 +422,11 @@ img {
 /*term1 stuff*/
 #images {
     position: absolute;
+    width: 100%;
+    height: 93%;
     left: 0px;
     right: 0px;
-    top: 50px;
+    top: 0px;
     bottom: 0px;
     margin: auto;
 
