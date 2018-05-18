@@ -4,7 +4,7 @@ h1 {
     text-align: center;
     width: 600px;
     height: 150px;
-    top: -220px;
+    top: -200px;
     left: 0px;
     right: 0px;
     display: inline-block;
@@ -164,7 +164,7 @@ input:focus, textarea:focus, select:focus{
     width: 600px;
     height: 150px;
     margin: auto;
-    top: 100px;
+    top: -25px;
     bottom: 0;
     right: 0;
     left: 0;
@@ -306,7 +306,7 @@ img {
 
 #greyBack {
     /*background-attachment: fixed;*/
-    position: absolute;
+    position: fixed;
     background: rgba(0, 0, 0, 0.5);
     padding-top: 20px;
     height: 100vh;
@@ -433,12 +433,6 @@ img{
 }
 
 .thumbnails {
-    /*position: relative;
-    top: -15px;
-    left: -15px;
-    width: 100%;
-    height: 100%;
-*/
     position: relative;
     width: 50px;
     height: 75px;
@@ -463,7 +457,7 @@ img{
     z-index: 0;
 }
 #bin {
-    position:absolute;
+    position:fixed;
     width:50px;
     height:50px;
     left:0px;
@@ -473,4 +467,39 @@ img{
     margin:auto;
     z-index: 1;
     display:none;
+}
+
+#backgrounds {
+    position:absolute;
+    top:400px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    margin:auto;
+    width:550px;
+    height:180px;
+    text-align:center;
+    background-color:rgba(50, 50, 50, 0.5);
+    border:5px double white;
+}
+
+#backgroundMenu {
+    color:white;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    border:none;
+    font: 25px bold;
+    top:-5px;
+    text-shadow: -1.5px -1px 0 #000,
+    1.5px -1px 0 #000,
+    -1.5px 1px 0 #000,
+    1.5px 1px 0 #000;
+}
+
+.BackgroundOptions {
+    position:relative;
+    width:25%;
+    height:25%;
+    display:inline-block;
+    top:-30px;
 }
