@@ -1,4 +1,5 @@
 const request = require('request');
+var dbCred = require("./databaseCred.js");
 
 
 /**
@@ -10,7 +11,7 @@ const request = require('request');
 
 module.exports.getThumbnails = function(query, callback) {
     request({
-        url: 'https://www.europeana.eu/api/v2/search.json?wskey=BScfR482T&query=' + encodeURIComponent(query),
+        url: 'https://www.europeana.eu/api/v2/search.json?wskey=' + dbCred.apik + '&query=' + encodeURIComponent(query),
         json: true
     }, (error, response, body) => {
         var piclist = [];
