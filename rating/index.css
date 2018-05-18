@@ -1,0 +1,86 @@
+body{
+	overflow: hidden;
+}
+
+#images {
+	position: absolute;
+	width: 90vw;
+	height: 80vh;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	background-color: lightgrey;
+}
+
+#greyBack {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	top: 0px;
+	left: 0px;
+	background-color: black;
+	opacity: 0;
+	transition: all 0.5s;
+	z-index: -1;
+}
+
+.boxes {
+	position: relative;
+	width: 50px;
+	height: 75px;
+	padding: 5px;
+	margin: 20px;
+	background-color: grey;
+	display: inline-block;
+	transition: all 0.5s;
+	border-radius: 5px;
+	z-index: 0;
+}
+
+#rating {
+	position: absolute;
+	margin: auto;
+	width: 40%;
+	height: 10%;
+	left: 0px;
+	right: 0px;
+	border: solid black 2px;
+	border-radius: 5px;
+	bottom: 5%;
+	background: radial-gradient(white, lightgrey);
+	display: none;
+	opacity: 0;
+	transition: all 0.5s;
+	z-index: 1;
+}
+
+.rateButs {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	border-radius: 1px;
+	background-repeat: no-repeat;
+	width: 20%;
+	height: 70%;
+}
+
+.rateButs:hover {
+	cursor: pointer;
+}
+
+#thumbsUp {
+	left: 20%;
+	background-image: url(imgs/thumbsup.png);
+	background-size: contain;
+	background-position: center;
+}
+
+#thumbsDown {
+	right: 20%;
+	background-image: url(imgs/thumbsdown.png);
+	background-size: contain;
+	background-position: center;
+}
