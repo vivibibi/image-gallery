@@ -7,22 +7,25 @@
     <link href='style.css' rel='stylesheet' type='text/css' />
 </head>
 
-<body id=resultsBody>
+<body id='resultsBody'>
 <!--<div id ='controls'<form method='GET' action='/'><input class='button' id='mainBut' type='submit' value='Main Page'/></form> -->
     <div id="menuDiv">
         <a id='menuHome' href='/' class='menuBut'>Main Page</a>
         <a id='menuGal' href="/gallery" class="menuBut">Gallery</a>
         <a id='menuFav' href="/favorite" class="menuBut">Favorite</a>
     </div>
+    
 <form id='form' action='/results' method='GET'>
     <input id='searchText' type='text' name='query' placeholder='Search' />
     <input class='button' id='subBut' type='submit' value='Submit'>
 </form>
 
+<div id='formDiv'>
 <form method='GET' action='/gallery' id='formSave'>
     <input type='text' id='title' name='title' placeholder='Insert a title' />
     <input name='save' id='save' value='save' type='submit' />
 </form>
+</div>
 </body>
 
 <div id='divv'>{{{pictures}}} </div>

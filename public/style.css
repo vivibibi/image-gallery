@@ -4,7 +4,7 @@ h1 {
     text-align: center;
     width: 600px;
     height: 150px;
-    top: -220px;
+    top: -200px;
     left: 0px;
     right: 0px;
     display: inline-block;
@@ -164,7 +164,7 @@ input:focus, textarea:focus, select:focus{
     width: 600px;
     height: 150px;
     margin: auto;
-    top: 100px;
+    top: -25px;
     bottom: 0;
     right: 0;
     left: 0;
@@ -176,7 +176,8 @@ input:focus, textarea:focus, select:focus{
     border-radius: 10px;
     padding: 5px;
 }
-#body {
+
+#searchBody {
     background-image: url('bg.jpg');
     background-size: cover;
     background-position: center;
@@ -198,7 +199,9 @@ input:focus, textarea:focus, select:focus{
     width:100vw;
     height: 38px;
     background-color: rgba(30, 30, 30, 0.8);
+    position: fixed;
 }
+
 .menuBut {
     display: inline;
     text-transform: uppercase;
@@ -211,10 +214,12 @@ input:focus, textarea:focus, select:focus{
     transition: 0.5s;
     text-decoration: none;
 }
+
 .menuBut:hover{
     color: black;
     background-color: white ;
 }
+
 #usern {
     position: fixed;
     top:-10px;
@@ -228,8 +233,14 @@ input:focus, textarea:focus, select:focus{
     background-image: url('pa.jpg');
     background-size: cover;
     background-position: center;
+<<<<<<< HEAD
     background-attachment: fixed;
     margin: 0;
+=======
+    background-attachment: fixed; 
+    top:-100px;
+    margin:0;
+>>>>>>> 016e026b4e6d2072a123bd352023900fad488c2b
 }
 
 #formSave {
@@ -242,6 +253,7 @@ input:focus, textarea:focus, select:focus{
     position: absolute;
     left:0;
     right:0;
+    top:10px;
 }
 #divv {
     position: absolute;
@@ -287,6 +299,16 @@ img {
 }
 /*gallery*/
 
+#images {
+    top: 50px;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #greyBack {
     /*background-attachment: fixed;*/
     position: fixed;
@@ -300,6 +322,40 @@ img {
     transition: all 0.5s;
     z-index: -1;
 }
+
+body {
+    height: 100%;
+    background-image: url('ab.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    top:-100px;
+    margin:0;
+}
+
+#galDiv {
+    position: absolute;
+    width: 100%;
+    height: 93%;
+    left: 0;
+    right: 0;
+    top: 50;
+    bottom: 0;
+    overflow-y: scroll;
+    border-top: 3px double white;    
+}
+
+#favBody {
+    height: 100%;
+    background-image: url('fav.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    top:-100px;
+    margin:0;
+}
+
+
 /*class for button*/
 .button {
     display: inline-block;
@@ -312,6 +368,47 @@ img {
     background: rgba(0, 0, 0, 0.5);
     transition: 0.5s;
 }
+/*
+.thumbnails {
+    width: 150px;
+    height: 180px;
+    display: inline-block;
+    float: left;
+    padding-bottom: 45px;
+    padding-left: 45px;
+    padding-top: 25px;
+}
+<<<<<<< HEAD
+
+/*favorites*/
+.button {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: white;
+    border: 2.5px solid white;
+    padding:10px;
+
+    text-align: center;
+    background: rgba(0,0,0,0.5);
+    transition: 0.5s;
+}
+
+#mainBut {
+    text-decoration: none;
+    font-family: sans-serif;
+    position: fixed;
+}
+
+img{
+    width:20%;
+    height:45%;
+    display: inline-block;
+    float: left;
+    padding: 15px;
+    padding-top: 60px;
+}
+
 
 #galBody {
     background-image: url('ab.jpg');
@@ -338,9 +435,11 @@ img {
 /*term1 stuff*/
 #images {
     position: absolute;
+    width: 100%;
+    height: 93%;
     left: 0px;
     right: 0px;
-    top: 50px;
+    top: 0px;
     bottom: 0px;
     margin: auto;
 
@@ -350,9 +449,14 @@ img {
     position: relative;
     width: 50px;
     height: 75px;
-    padding: 5px;
+    padding: 0.9%;
+    padding-top:1.5%;
+    padding-bottom:1.5%;
     margin: 20px;
-    background-color: grey;
+    background-color: white;
+    background-image:url("frame.png");
+    background-size:100% 100%;
+    background-repeat:no-repeat;
     display: inline-block;
     transition: all 0.5s;
     z-index: 0;
@@ -382,4 +486,39 @@ img {
     margin:auto;
     z-index: 1;
     display:none;
+}
+
+#backgrounds {
+    position:absolute;
+    top:400px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    margin:auto;
+    width:550px;
+    height:180px;
+    text-align:center;
+    background-color:rgba(50, 50, 50, 0.5);
+    border:5px double white;
+}
+
+#backgroundMenu {
+    color:white;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    border:none;
+    font: 25px bold;
+    top:-5px;
+    text-shadow: -1.5px -1px 0 #000,
+    1.5px -1px 0 #000,
+    -1.5px 1px 0 #000,
+    1.5px 1px 0 #000;
+}
+
+.BackgroundOptions {
+    position:relative;
+    width:25%;
+    height:25%;
+    display:inline-block;
+    top:-30px;
 }
