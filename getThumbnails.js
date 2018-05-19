@@ -8,6 +8,7 @@ const request = require('request');
 const dbCred = require("./databaseCred.js");
 
 
+
 /**
  * Retrieves thumbnails from a search query
  * @param {string} query - The query sent to the API
