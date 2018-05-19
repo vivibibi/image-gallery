@@ -6,7 +6,7 @@ var validateLoadGal = require("./loadGal.js");
 var validateCreateAccount = require("./createAccount.js");
 var validateCheckPassword = require("./checkPassword.js");
 
-var albums = validateAddAlbum.addAlbum("title", "url", 'coolguy');
+var albums = validateAddAlbum.addAlbum("title", "url", 'testinguser');
 
 
 var MongoClient = require('mongodb').MongoClient;
@@ -26,10 +26,8 @@ describe("testing addAlbum", () => {
         MongoClient.connect(dbCred.uri, function(err, client) {
             const fav = client.db("Users").collection("Gallery");
             fav.find({
-                username: 'coolguy'
+                username: 'testinguser'
             }).forEach(function(error, doc) {
-
-
                 expect(error.img_links).toContain('url');
                 expect(error.title).toContain('title');
 
@@ -41,7 +39,7 @@ describe("testing addAlbum", () => {
     });
 })
 
-var fav = validateFavPic.favPic('https://www.europeana.eu/api/v2/thumbnail-by-url.json?dbCred.uri=http%3A%2F%2Fzudusilatvija.lv%2Fstatic%2Ffiles%2F16%2F08%2F27%2F000060.png&size=LARGE&type=IMAGE', "Guest");
+var fav = validateFavPic.favPic('https://www.europeana.eu/api/v2/thumbnail-by-url.json?dbCred.uri=http%3A%2F%2Fzudusilatvija.lv%2Fstatic%2Ffiles%2F16%2F08%2F27%2F000060.png&size=LARGE&type=IMAGE', "testinguser");
 
 
 describe("testing fav", () => {
@@ -49,7 +47,7 @@ describe("testing fav", () => {
         MongoClient.connect(dbCred.uri, function(err, client) {
             const fav = client.db("Users").collection("Favorites");
             fav.find({
-                username: 'guest'
+                username: 'testinguser'
             }).forEach(function(error, doc) {
                 expect(error.img_link).toContain('https://www.europeana.eu/api/v2/thumbnail-by-url.json?dbCred.uri=http%3A%2F%2Fzudusilatvija.lv%2Fstatic%2Ffiles%2F16%2F08%2F27%2F000060.png&size=LARGE&type=IMAGE');
 
@@ -72,33 +70,44 @@ describe("testing fav", () => {
 
 
 describe("testing api", () => {
-    test("a valid search", () => {
+    test("a valid search", done => {
         validateGetThumbnails.getThumbnails("DoG", (errorMessage, results) => {
             expect(results).toBeDefined();
             expect(errorMessage).toBeNull();
-        })
+            done();
+        });
+
     });
-    test("a search with no results", () => {
+    test("a search with no results", done => {
         validateGetThumbnails.getThumbnails("cat", (errorMessage, results) => {
             expect(errorMessage).toBeDefined();
             expect(results).toBeUndefined();
             expect(errorMessage).toContain('No images found');
-        })
+            done();
+        });
+
     });
 });
 
 
 describe("testing loadImgs.js", () => {
-    test("loads a list of imgs into a string", () => {
+    test("loads a list of imgs into a string", done => {
         validateloadImgs.loadImgs('Guest', (result) => {
-            expect(result).toContain('img src');
+            setTimeout(function() {
+                expect(result).toContain('img src');
+                done();
+            }, 2000);
+
         });
 
     });
 
-    test("invalid username", () => {
+    test("invalid username", done => {
         validateloadImgs.loadImgs('jdsl', (result) => {
-            expect(result).toContain('img src');
+            setTimeout(function() {
+                expect(result).toContain('');
+                done();
+            }, 2000);
         });
 
     });
@@ -107,9 +116,21 @@ describe("testing loadImgs.js", () => {
 
 
 describe("testing loadGal.js", () => {
-    test("adds html to the raw links of the albums", () => {
-        validateLoadGal.loadGal('coolguy', (results) => {
-            expect(results).toContain('id=galDiv');
+    test("adds html to the raw links of the albums", done => {
+        validateLoadGal.loadGal('Guest', (results) => {
+           
+                expect(results).toContain("<img id='bin' src='bin.jpg' /></div><div id='greyBack'>");
+                done();
+            
+            
+        })
+    });
+    test("invalid username", done => {
+        validateLoadGal.loadGal('jdsfkj', (results) => {
+          
+                expect(results).toContain("<body onclick='getID(this.id)'><div id='images'>");
+                done();
+          
         })
     });
 });
@@ -154,4 +175,3 @@ describe("testing checkPassword.js", () => {
         validateCheckPassword.checkPassword('y', "verycool");
     });
 });
-

@@ -1,14 +1,17 @@
+/** 
+ * Request is used to get a JSON object from an API call
+ */
 const request = require('request');
-var dbCred = require("./databaseCred.js");
+/** 
+ * File with credentials needed to access the API key
+ */
+const dbCred = require("./databaseCred.js");
 
 
 /**
  * Retrieves thumbnails from a search query
  * @param {string} query - The query sent to the API
- * @requires request
- * @returns {list} piclist -  A list of HTML strings containing the image result's URLS.
  */
-
 module.exports.getThumbnails = function(query, callback) {
     request({
         url: 'https://www.europeana.eu/api/v2/search.json?wskey=' + dbCred.apik + '&query=' + encodeURIComponent(query),

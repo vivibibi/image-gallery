@@ -1,5 +1,11 @@
-var MongoClient = require('mongodb').MongoClient;
-var dbCred = require("./databaseCred.js");
+/** 
+ * Mongodb function used to connect to the database
+ */
+const MongoClient = require('mongodb').MongoClient;
+/** 
+ * File with credentials needed to access the database
+ */
+const dbCred = require("./databaseCred.js");
 
 /**
  * loads all the users favorite images from the database
@@ -8,7 +14,6 @@ var dbCred = require("./databaseCred.js");
  * @requires mongodb
  * @requires ./databaseCred.js 
  */
- 
 module.exports.loadImgs = function(user, callback) {
     global.favo_val = '';
     MongoClient.connect(dbCred.uri, function(err, client) {
@@ -19,11 +24,13 @@ module.exports.loadImgs = function(user, callback) {
             favo_val += '<img src=' + error.img_link + ' <br>';
         });
         client.close();
-        
+
 
     });
     setTimeout(function() {
-            callback(favo_val)
-        }, 2000);
+        callback(favo_val)
+        
+    }, 2000);
+
 
 }
