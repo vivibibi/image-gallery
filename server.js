@@ -189,10 +189,6 @@ app.get('/gallery', (request, response) => {
     });
 
 
-
-
-
-
 });
 
 
