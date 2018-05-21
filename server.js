@@ -1,57 +1,25 @@
-/** 
- * Express is used to start a webserver
- */
 const express = require('express');
-/** 
- * Handlebars is used to insert dynamic data (e.g. new albums)
- */
+const request = require('request');
+const fs = require('fs');
 const hbs = require('hbs');
-/** 
- * Body-parser gets POST parameters
- */
-const bodyParser = require('body-parser');
-/** 
- * Mongodb function used to connect to the database
- */
-const MongoClient = require('mongodb').MongoClient;
-
-/** 
- * Submits an album to the database
- */
-const addAlbum = require('./addAlbum.js');
-/** 
- * Retrieves thumbnails from a search query
- */
-const getThumbs = require('./getThumbnails.js');
-/** 
- * Saves a single image when you click on the favorite button to the database
- */
-const favPic = require('./favPic.js');
-/** 
- * loads all the user's albums from the database
- */
-const loadGal = require('./loadGal.js');
-/** 
- * Checks to see if the entered password matches the one from the database
- */
-const checkPassword = require('./checkPassword.js');
-/** 
- * loads all the user's favorites from the database
- */
-const loadImgs = require('./loadImgs.js');
-/** 
- * File with credentials needed to access the database
- */
-const dbCred = require("./databaseCred.js");
-
-/** 
- * Calls an express function so that we can use GET and POST
- */
-var app = express();
-/** 
- * Server runs on port 8080
- */
 const port = process.env.PORT || 8080;
+const bodyParser = require('body-parser');
+
+const addAlbum = require('./addAlbum.js');
+const getThumbs = require('./getThumbnails.js');
+const favPic = require('./favPic.js');
+
+const loadGal = require('./loadGal.js');
+const checkPassword = require('./checkPassword.js');
+const loadImgs = require('./loadImgs.js');
+
+
+var MongoClient = require('mongodb').MongoClient;
+var dbCred = require("./databaseCred.js");
+
+
+var app = express();
+
 
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -63,10 +31,8 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 global.session_user = 'Guest'
-/** 
- * When a search result is sent, the query is stored here
- */
-var nquery = '';
+var thumbs = [],
+    nquery = '';
 
 
 /**
@@ -77,6 +43,7 @@ app.get('/', (request, response) => {
     /**
      * Displays the home page depending on the user (default is guest)
      */
+
     response.render('search.hbs', {
         title: 'Home Page',
         username: session_user
@@ -87,6 +54,7 @@ app.get('/', (request, response) => {
 /**
  * Completes a post request whenever a user signs in
  */
+
 app.post('/', (req, res) => {
     /**
      * Connects to the user collection and retrieves the password from the database and verifies that the passwords match
@@ -102,9 +70,9 @@ app.post('/', (req, res) => {
 
         });
         client.close();
-
+    
     });
-
+    
     /**
      * Renders a new homepage with the updated user
      */
@@ -136,9 +104,9 @@ app.get('/results', (request, response) => {
             global.galThumbs = '<br>';
             for (i = 0; i < results.length; i++) {
                 listofimgs.push(results[i]);
-                galThumbs += '<img class=thumbnails id=pic' + i + '  src=' + results[i] + '>';
-                formatThumbs += '<img class=thumbnails id=pic' + i + '  src=' + results[i] + '><form id=favForm method=GET action=/favorite>' +
-                    '<button name=favorite id=favorite value=' + i + ' type=submit>❤</button></form>';
+                galThumbs += '<img class=thumbnails id=pic'+ i + '  src=' + results[i] + '>';
+                formatThumbs += '<img class=thumbnails id=pic'+ i + '  src=' + results[i] + '><form id=favForm method=GET action=/favorite>'+
+'<button name=favorite id=favorite value=' + i + ' type=submit>❤</button></form>';
             }
 
         } else {
@@ -167,6 +135,7 @@ app.get('/results', (request, response) => {
 /** 
  * Routes the /gallery path
  */
+
 app.get('/gallery', (request, response) => {
     /** 
      * if user enters title and clicks the "save" button, an album will be added to gallery
@@ -175,18 +144,20 @@ app.get('/gallery', (request, response) => {
         addAlbum.addAlbum(request.query.title, galThumbs, session_user);
     }
     /** 
-     * albums are retrieved based on the user that is signed in
+     * the HTML code is sent to be displayed
      */
+
     loadGal.loadGal(session_user, (result) => {
-      
-            response.render('gallery.hbs', {
-                title: 'Gallery',
-                album: result
+        response.render('gallery.hbs', {
+            title: 'Gallery',
+            album: result
 
-            });
-        
-
+        });
     });
+
+
+
+
 
 
 });
@@ -195,7 +166,9 @@ app.get('/gallery', (request, response) => {
 /** 
  * Routes the /favorite path
  */
+
 app.get('/favorite', (request, response) => {
+
     /**
      * if user clicks the "favorite" button, the image will be added to favorite
      */
