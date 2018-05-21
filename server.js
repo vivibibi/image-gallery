@@ -83,8 +83,47 @@ app.post('/', (req, res) => {
 
 });
 
-app.post("/account", (req, res) => {
-    res.req.body.uname
+
+
+app.post("/create_account", (req, res) => {
+    var us = 0;
+    MongoClient.connect(dbCred.uri, function(err, client) {
+        const users = client.db("Users").collection("Users");
+        users.find({
+            username: res.req.body.uname
+        }).forEach(function(error, doc) {
+            us += 1;
+
+        });
+        client.close();
+    });
+
+    setTimeout(function() {
+        if (res.req.body.pswd == res.req.body.pswd2 && us == 0) {
+            MongoClient.connect(dbCred.uri, function(err, client) {
+                const users = client.db("Users").collection("Users");
+                users.insert({
+                    username: res.req.body.uname,
+                    password: res.req.body.pswd
+                });
+                client.close();
+
+            });
+            res.render('createacc.hbs', {
+                title: 'Account Created!',
+                message: 'Congratulations ' + res.req.body.uname + ', you have successfully created an account.'
+            });
+
+        } else {
+
+            res.render('createacc.hbs', {
+                title: 'Account Creation Unsuccessful',
+                message: 'Please try again.'
+            });
+
+
+        }
+    }, 3000);
 
 });
 
@@ -148,13 +187,13 @@ app.get('/gallery', (request, response) => {
      * albums are retrieved based on the user that is signed in
      */
     loadGal.loadGal(session_user, (result) => {
-      
-            response.render('gallery.hbs', {
-                title: 'Gallery',
-                album: result
 
-            });
-        
+        response.render('gallery.hbs', {
+            title: 'Gallery',
+            album: result
+
+        });
+
 
     });
 
