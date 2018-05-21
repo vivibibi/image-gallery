@@ -1,11 +1,10 @@
+
 const MongoClient = require('mongodb').MongoClient;
 const dbCred = require("./databaseCred.js");
 
 /**
  * loads all the user's albums from the database
  * @param {string} user       - the user's username
- * @requires mongodb
- * @requires ./databaseCred.js 
  * @param {function} callback - returns the results of the retrieval from the database
  */
 module.exports.loadGal = function(user, callback) {

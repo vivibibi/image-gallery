@@ -14,7 +14,6 @@ const loadImgs = require('./loadImgs.js');
  */
 const dbCred = require("./databaseCred.js");
 
-
 var app = express();
 
 const port = process.env.PORT || 8080;
@@ -51,7 +50,7 @@ app.get('/', (request, response) => {
 });
 
 /**
- * Completes a post request whenever a user signs in
+ * Completes a post request whenever a user signs in or creates an account
  */
 app.post('/', (req, res) => {
     /**
@@ -81,6 +80,11 @@ app.post('/', (req, res) => {
 
         });
     }, 2000);
+
+});
+
+app.post("/account", (req, res) => {
+    res.req.body.uname
 
 });
 
