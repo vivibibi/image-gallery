@@ -1,15 +1,6 @@
-/** 
- * Mongodb function used to connect to the database
- */
 const MongoClient = require('mongodb').MongoClient;
-/** 
- * File with credentials needed to access the database
- */
 const dbCred = require("./databaseCred.js");
 
-/** 
- * object where album title and img links is stored
- */
 var album = {
     title: 'title',
     imgs: 'imgs',

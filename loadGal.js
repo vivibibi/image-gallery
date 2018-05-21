@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 var MongoClient = require('mongodb').MongoClient;
 var dbCred = require("./databaseCred.js");
+=======
+
+const MongoClient = require('mongodb').MongoClient;
+const dbCred = require("./databaseCred.js");
+>>>>>>> a2aaff7ab13ff8f68a6aaf4db8dcac70e2ee1a30
 
 /**
  * loads all the users albums from the database
