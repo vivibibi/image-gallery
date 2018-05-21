@@ -1,16 +1,13 @@
-/** 
- * Request is used to get a JSON object from an API call
- */
 const request = require('request');
-/** 
- * File with credentials needed to access the API key
- */
 const dbCred = require("./databaseCred.js");
+
 
 
 /**
  * Retrieves thumbnails from a search query
  * @param {string} query - The query sent to the API
+ * @requires request
+ * @requires ./databaseCred.js 
  */
 module.exports.getThumbnails = function(query, callback) {
     request({

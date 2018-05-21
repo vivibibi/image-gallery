@@ -1,10 +1,5 @@
-/** 
- * Mongodb function used to connect to the database
- */
 const MongoClient = require('mongodb').MongoClient;
-/** 
- * File with credentials needed to access the database
- */
+
 const dbCred = require("./databaseCred.js");
 
 /** 
@@ -20,6 +15,8 @@ var album = {
  * @param {string} title - the title of the album 
  * @param {string} imgs  - the images added to the album
  * @param {string} user  - the user to whom the album belongs to
+ * @requires mongodb
+ * @requires ./databaseCred.js 
  * @returns {array} imglist - a list of album objects 
  */
 module.exports.addAlbum = (title, imgs, user) => {

@@ -7,7 +7,7 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body id="body">
+<body id="searchBody">
     <div id="menuDiv">
         <a id='menuHome' href='/' class='menuBut'>Main Page</a>
         <a id='menuGal' href="/gallery" class="menuBut">Gallery</a>
@@ -22,6 +22,16 @@
             <input id="searchText" type="text" name="query" placeholder="Search" />
             <input class="button" id="subBut" type="submit" value="Submit">
         </form>
+    </div>
+    
+    <div id="backgrounds">
+        <h2 id="backgroundMenu">Search Backgrounds</h2>
+        <img id="Background1" class="BackgroundOptions" src="pa.jpg"/>
+        <img id="Background1" class="BackgroundOptions" src="BackgroundOption1.jpg"/>
+        <img id="Background1" class="BackgroundOptions" src="BackgroundOption2.jpg"/>
+        <img id="Background1" class="BackgroundOptions" src="BackgroundOption3.jpg"/>
+        <img id="Background1" class="BackgroundOptions" src="BackgroundOption4.jpg"/>
+        <img id="Background1" class="BackgroundOptions" src="BackgroundOption5.jpg"/>
     </div>
     
     <div id="backPage">
@@ -41,7 +51,8 @@
                 <input class="loginInput" type="password" placeholder="Password" name="pswd" required>
                 <input class="loginInput" type="password" placeholder="Confirm Password" name="pswd" required>
                 <button class="loginBut" type="submit">Create Account</button>
-                <a id="haveAcc" class="createAccLinks" onclick="document.getElementById('loginbox').style.display='block'; document.getElementById('createAcc').style.display='none'">Already have an account? Log-in now!</a>
+                <h4 id="lab2" class="label">Already have an account?</h4>
+                <a id="haveAcc" class="createAccLinks" onclick="document.getElementById('loginbox').style.display='block'; document.getElementById('createAcc').style.display='none'">Login</a>
             </div>
         </form>
     </div>
@@ -51,6 +62,7 @@
 var loginBox = document.getElementById('loginbox');
 var createBox = document.getElementById('createAcc');
 var page = document.getElementById('backPage');
+
 window.onclick = function(event) {
     if (event.target == backPage) {
         backPage.style.display = "none";

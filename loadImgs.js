@@ -1,10 +1,5 @@
-/** 
- * Mongodb function used to connect to the database
- */
+
 const MongoClient = require('mongodb').MongoClient;
-/** 
- * File with credentials needed to access the database
- */
 const dbCred = require("./databaseCred.js");
 
 /**

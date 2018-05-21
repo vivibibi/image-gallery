@@ -1,56 +1,22 @@
-/** 
- * Express is used to start a webserver
- */
 const express = require('express');
-/** 
- * Handlebars is used to insert dynamic data (e.g. new albums)
- */
 const hbs = require('hbs');
-/** 
- * Body-parser gets POST parameters
- */
 const bodyParser = require('body-parser');
-/** 
- * Mongodb function used to connect to the database
- */
 const MongoClient = require('mongodb').MongoClient;
 
-/** 
- * Submits an album to the database
- */
 const addAlbum = require('./addAlbum.js');
-/** 
- * Retrieves thumbnails from a search query
- */
 const getThumbs = require('./getThumbnails.js');
-/** 
- * Saves a single image when you click on the favorite button to the database
- */
 const favPic = require('./favPic.js');
-/** 
- * loads all the user's albums from the database
- */
 const loadGal = require('./loadGal.js');
-/** 
- * Checks to see if the entered password matches the one from the database
- */
 const checkPassword = require('./checkPassword.js');
-/** 
- * loads all the user's favorites from the database
- */
 const loadImgs = require('./loadImgs.js');
 /** 
- * File with credentials needed to access the database
+ * File with credentials needed to access the database and make API calls
  */
 const dbCred = require("./databaseCred.js");
 
-/** 
- * Calls an express function so that we can use GET and POST
- */
+
 var app = express();
-/** 
- * Server runs on port 8080
- */
+
 const port = process.env.PORT || 8080;
 
 
