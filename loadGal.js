@@ -1,7 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const dbCred = require("./databaseCred.js");
 
-
 /**
  * loads all the users albums from the database
  * @param {string} user       - the user's username

@@ -7,22 +7,9 @@
     <link href='style.css' rel='stylesheet' type='text/css' />
 </head>
 
-<body id='resultsBody'>
-<!--<div id ='controls'<form method='GET' action='/'><input class='button' id='mainBut' type='submit' value='Main Page'/></form> -->
+<body onclick='getID(this.id)'>
+  <div id="menuDiv">
 
-<div id="backgrounds">
-    <input id='showButton' type='button' value='Backgrounds' class="button">
-    <img id="Background1" class="BackgroundOptions" src="pa.jpg"/>
-    <img id="Background2" class="BackgroundOptions" src="BackgroundOption1.jpg"/>
-    <img id="Background3" class="BackgroundOptions" src="BackgroundOption2.jpg"/>
-    <img id="Background4" class="BackgroundOptions" src="BackgroundOption3.jpg"/>
-    <img id="Background5" class="BackgroundOptions" src="BackgroundOption4.jpg"/>
-    <img id="Background6" class="BackgroundOptions" src="BackgroundOption5.jpg"/>
-</div>
-
-    <div id="menuDiv">
-        <input id='showButton' type='button' value='Backgrounds' class="button">
-        <input id='hideButton' type='button' value='Hide' class="button">
         <a id='menuHome' href='/' class='menuBut'>Main Page</a>
         <a id='menuGal' href="/gallery" class="menuBut">Gallery</a>
         <a id='menuFav' href="/favorite" class="menuBut">Favorite</a>
@@ -40,53 +27,9 @@
 </form>
 </div>
 
+<div id='divv'>{{{pictures}}} </div>
 </body>
 
-<div id='divv'>{{{pictures}}} </div>
-    <script>
-    /*var butMain = document.getElementById('mainBut') butMain.addEventListener('mouseover', function() {
-    butMain.style.background = 'rgba(0,0,0,0.7)';
-    }) butMain.addEventListener('mouseleave', function() {
-        butMain.style.background = 'rgba(0,0,0,0.5)';
-    }) var butSave = document.getElementById('save') butSave.addEventListener('mouseover', function() {
-        butSave.style.background = 'rgba(0,0,0,0.7)';
-    }) butSave.addEventListener('mouseleave', function() {
-        butSave.style.background = 'rgba(0,0,0,0.5)';
-    })*/
     
-    document.getElementById("showButton").addEventListener("click", function() {
-    backgrounds.style.top = "5.5%";
-    });
-    
-    document.getElementById("hideButton").addEventListener("click", function() {
-    backgrounds.style.top = "-15%";
-    });
-
-    document.getElementById("Background1").addEventListener("click", function() {
-        resultsBody.style.backgroundImage = "url('pa.jpg')";
-    });
-    
-    document.getElementById("Background2").addEventListener("click", function() {
-        resultsBody.style.backgroundImage = "url('backgroundOption1.jpg')";
-    });
-    
-    document.getElementById("Background3").addEventListener("click", function() {
-        resultsBody.style.backgroundImage = "url('backgroundOption2.jpg')";
-    });
-    
-    document.getElementById("Background4").addEventListener("click", function() {
-        resultsBody.style.backgroundImage = "url('backgroundOption3.jpg')";
-    });
-    
-    document.getElementById("Background5").addEventListener("click", function() {
-        resultsBody.style.backgroundImage = "url('backgroundOption4.jpg')";
-    });
-    
-    document.getElementById("Background6").addEventListener("click", function() {
-        resultsBody.style.backgroundImage = "url('backgroundOption5.jpg')";
-    });
-    
-    
-    </script>
 
 </html>
