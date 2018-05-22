@@ -1,21 +1,13 @@
 const express = require('express');
-<<<<<<< HEAD
 const request = require('request');
 const fs = require('fs');
 const hbs = require('hbs');
 const port = process.env.PORT || 8080;
 const bodyParser = require('body-parser');
-=======
-const hbs = require('hbs');
-const bodyParser = require('body-parser');
-const MongoClient = require('mongodb').MongoClient;
->>>>>>> a2aaff7ab13ff8f68a6aaf4db8dcac70e2ee1a30
 
 const addAlbum = require('./addAlbum.js');
 const getThumbs = require('./getThumbnails.js');
 const favPic = require('./favPic.js');
-<<<<<<< HEAD
-
 const loadGal = require('./loadGal.js');
 const checkPassword = require('./checkPassword.js');
 const loadImgs = require('./loadImgs.js');
@@ -24,22 +16,12 @@ const loadImgs = require('./loadImgs.js');
 var MongoClient = require('mongodb').MongoClient;
 var dbCred = require("./databaseCred.js");
 
-
-var app = express();
-
-=======
-const loadGal = require('./loadGal.js');
-const checkPassword = require('./checkPassword.js');
-const loadImgs = require('./loadImgs.js');
 /** 
  * File with credentials needed to access the database and make API calls
  */
 const dbCred = require("./databaseCred.js");
 
 var app = express();
-
-const port = process.env.PORT || 8080;
->>>>>>> a2aaff7ab13ff8f68a6aaf4db8dcac70e2ee1a30
 
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -210,29 +192,16 @@ app.get('/gallery', (request, response) => {
     /** 
      * the HTML code is sent to be displayed
      */
-<<<<<<< HEAD
-
-    loadGal.loadGal(session_user, (result) => {
-        response.render('gallery.hbs', {
-            title: 'Gallery',
-            album: result
-=======
     loadGal.loadGal(session_user, (result) => {
 
         response.render('gallery.hbs', {
             title: 'Gallery',
             album: result
 
-        });
-
->>>>>>> a2aaff7ab13ff8f68a6aaf4db8dcac70e2ee1a30
 
         });
+
     });
-
-
-
-
 
 
 });
