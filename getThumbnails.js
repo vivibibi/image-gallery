@@ -1,6 +1,10 @@
 const request = require('request');
-const dbCred = require("./databaseCred.js");
 
+/** 
+ * File with credentials needed to access the API key
+ */
+
+const dbCred = require("./databaseCred.js");
 
 
 /**

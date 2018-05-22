@@ -17,8 +17,7 @@
 </div>
 
     <div id="menuDiv">
-        <input id='showButton' type='button' value='Backgrounds' class="button">
-        <input id='hideButton' type='button' value='Hide' class="button">
+        <input id='showButton' type='button' value='Backgrounds' class="button" onclick="menu()">
         <a id='menuHome' href='/' class='menuBut'>Main Page</a>
         <a id='menuGal' href="/gallery" class="menuBut">Gallery</a>
         <a id='menuFav' href="/favorite" class="menuBut">Favorite</a>
@@ -35,13 +34,14 @@
 
 <script>
 
-    document.getElementById("showButton").addEventListener("click", function() {
-    backgrounds.style.top = "5.5%";
-    });
-    
-    document.getElementById("hideButton").addEventListener("click", function() {
-    backgrounds.style.top = "-15%";
-    });
+    function menu(){
+        var imgBack = document.getElementById('backgrounds');
+        if (imgBack.style.top === "-100px"){
+            imgBack.style.top = "40px";
+        } else {
+            imgBack.style.top = "-100px"
+        }
+    }
 
 
     document.getElementById("Background1").addEventListener("click", function() {
