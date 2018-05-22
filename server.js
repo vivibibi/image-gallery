@@ -233,7 +233,6 @@ app.get('/favorite', (request, response) => {
 
 });
 
-});
 
 
 /** 
