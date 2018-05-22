@@ -233,8 +233,6 @@ app.get('/favorite', (request, response) => {
 
 });
 
-});
-
 
 /** 
  * push the server up on the port
