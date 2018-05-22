@@ -233,7 +233,10 @@ app.get('/favorite', (request, response) => {
 
 });
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> a22ce1bf5c9efc13b06181763587c307d4707e35
 
 /** 
  * push the server up on the port
