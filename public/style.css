@@ -234,6 +234,7 @@ input:focus, textarea:focus, select:focus{
     background-size: cover;
     background-position: center;
 <<<<<<< HEAD
+<<<<<<< HEAD
     background-attachment: fixed; 
     top:-100px;
     margin:0;
@@ -247,6 +248,11 @@ input:focus, textarea:focus, select:focus{
     margin:0;
 >>>>>>> 016e026b4e6d2072a123bd352023900fad488c2b
 >>>>>>> 5f416fb2077dcc01080402f5187e631b1ca84427
+=======
+    background-attachment: fixed; 
+    top:-100px;
+    margin:0;
+>>>>>>> a22ce1bf5c9efc13b06181763587c307d4707e35
 }
 
 #formSave {
