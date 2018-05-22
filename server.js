@@ -8,10 +8,7 @@ const bodyParser = require('body-parser');
 const addAlbum = require('./addAlbum.js');
 const getThumbs = require('./getThumbnails.js');
 const favPic = require('./favPic.js');
-<<<<<<< HEAD
 
-=======
->>>>>>> baf0b4a8511f4538aaf62111cb347826eb1cc6c4
 const loadGal = require('./loadGal.js');
 const checkPassword = require('./checkPassword.js');
 const loadImgs = require('./loadImgs.js');
@@ -20,20 +17,16 @@ const loadImgs = require('./loadImgs.js');
 var MongoClient = require('mongodb').MongoClient;
 var dbCred = require("./databaseCred.js");
 
-<<<<<<< HEAD
 
 var app = express();
-/** 
- * File with credentials needed to access the database and make API calls
- */
-=======
+
 /** 
  * File with credentials needed to access the database and make API calls
  */
 const dbCred = require("./databaseCred.js");
 
 var app = express();
->>>>>>> baf0b4a8511f4538aaf62111cb347826eb1cc6c4
+
 
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -207,31 +200,21 @@ app.get('/gallery', (request, response) => {
     /** 
      * the HTML code is sent to be displayed
      */
-<<<<<<< HEAD
 
-=======
->>>>>>> baf0b4a8511f4538aaf62111cb347826eb1cc6c4
     loadGal.loadGal(session_user, (result) => {
 
         response.render('gallery.hbs', {
             title: 'Gallery',
             album: result
 
-<<<<<<< HEAD
-=======
 
->>>>>>> baf0b4a8511f4538aaf62111cb347826eb1cc6c4
         });
 
     });
 
-
-<<<<<<< HEAD
-=======
 });
 
 
->>>>>>> baf0b4a8511f4538aaf62111cb347826eb1cc6c4
 /** 
  * Routes the /favorite path
  */
