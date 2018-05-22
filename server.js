@@ -19,14 +19,11 @@ var MongoClient = require('mongodb').MongoClient;
 
 var app = express();
 
+
 /** 
  * File with credentials needed to access the database and make API calls
  */
 const dbCred = require("./databaseCred.js");
-
-var app = express();
-
-
 
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
@@ -205,7 +202,6 @@ app.get('/gallery', (request, response) => {
         response.render('gallery.hbs', {
             title: 'Gallery',
             album: result
-
 
         });
 
