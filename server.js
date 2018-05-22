@@ -15,7 +15,6 @@ const loadImgs = require('./loadImgs.js');
 
 
 var MongoClient = require('mongodb').MongoClient;
-var dbCred = require("./databaseCred.js");
 
 
 var app = express();
