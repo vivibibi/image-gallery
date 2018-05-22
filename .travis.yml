@@ -4,5 +4,8 @@ node_js:
 cache:
   directories:
     - "node_modules"
+<<<<<<< HEAD
 script:
    - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./travis/run_on_pull_requests; fi'
+=======
+>>>>>>> 5f416fb2077dcc01080402f5187e631b1ca84427
