@@ -1,11 +1,9 @@
-/** 
- * Request is used to get a JSON object from an API call
- */
 const request = require('request');
 
 /** 
  * File with credentials needed to access the API key
  */
+
 const dbCred = require("./databaseCred.js");
 
 
