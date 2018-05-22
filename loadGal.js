@@ -1,12 +1,16 @@
-
 const MongoClient = require('mongodb').MongoClient;
 const dbCred = require("./databaseCred.js");
 
+
 /**
- * loads all the user's albums from the database
+ * loads all the users albums from the database
  * @param {string} user       - the user's username
  * @param {function} callback - returns the results of the retrieval from the database
+ * @requires mongodb
+ * @requires ./databaseCred.js 
  */
+
+
 module.exports.loadGal = function(user, callback) {
     global.gallery_val = "<body onclick='getID(this.id)'><div id='images'>";
     MongoClient.connect(dbCred.uri, function(err, client) {
