@@ -8,10 +8,14 @@ const bodyParser = require('body-parser');
 const addAlbum = require('./addAlbum.js');
 const getThumbs = require('./getThumbnails.js');
 const favPic = require('./favPic.js');
-
 const loadGal = require('./loadGal.js');
 const checkPassword = require('./checkPassword.js');
 const loadImgs = require('./loadImgs.js');
+
+
+var app = express();
+
+const port = process.env.PORT || 8080;
 
 
 var MongoClient = require('mongodb').MongoClient;
@@ -24,6 +28,7 @@ var app = express();
  * File with credentials needed to access the database and make API calls
  */
 const dbCred = require("./databaseCred.js");
+
 
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
@@ -202,12 +207,12 @@ app.get('/gallery', (request, response) => {
         response.render('gallery.hbs', {
             title: 'Gallery',
             album: result
+        });
 
         });
 
     });
 
-});
 
 
 /** 
@@ -232,11 +237,6 @@ app.get('/favorite', (request, response) => {
 
 
 });
-
-<<<<<<< HEAD
-=======
-
->>>>>>> a22ce1bf5c9efc13b06181763587c307d4707e35
 
 /** 
  * push the server up on the port

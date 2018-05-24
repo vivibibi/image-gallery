@@ -1,11 +1,13 @@
 language: node_js
 node_js:
- - "node"
+- node
 cache:
   directories:
-    - "node_modules"
-<<<<<<< HEAD
-script:
-   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./travis/run_on_pull_requests; fi'
-=======
->>>>>>> 5f416fb2077dcc01080402f5187e631b1ca84427
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: PNinErKYyOZOo4Q1r4+1I20Zv1G7R+F89WRMsCZ7EHOpDWdnu5Me3jDCios/JxLNycq3eN5coWzT68Q35/SAeya/ZPN7NvGZb0JibLzfn/L1WIeGBTXVBd/uXm846M26TpgoFAWAy/ebvCW/9n79+PobVTupHsIBObncEc9/FSP/RtNGuggYGVR9YtIDUn/b2Q3eRmdHJf4lokw9DUB90wP6sOXAXyDRL1UK+MQ/QYY3itzPjQQpHgshJg1HhqD8yOP3bpglzP3BASQrGfT/UGwVWoWvl8xrxwcC8zTEdRyH8FL12khRxUw6TmGqMBrQ25lF/xvfc4WJuoA+tf7AU5N2TDxKLDuLXkajb3tr0UASxuy5fmv7FSwSfJKvbWY2FyIaRN2TZkNylfMgbBSJi8QiqnqhIO8JlRNDnYleyJBuEJMQYUEv62O5yliSpsdxPKgCjn9f+/ZP5VEgX6QqNXK6CFlUZvyr9ObqAV2BFZkb2pO6bthLzGe/ewTeoqx3k7qfZV4KWQqaFop58GoUlRPbaat5dttkw9RkCT+82yrilESxkyfFC5IbTtBXNGdxZGSVgOH/E7wbyzNaP5ICqi0do6u19uLeDSjUcdgxOcUukuZY5VvsW5bbonkGEK5QqbTWzRIcLyTm0aQJ75H4/4OXljkPOO9lq2zD6ApVNEk=
+  app: image-gallery
+  on:
+    repo: schirhei/image-gallery
