@@ -6,24 +6,68 @@
     <title>{{title}}</title>
     <link href='style.css' rel='stylesheet' type='text/css' />
 </head>
-<<<<<<< HEAD
+
+<div id="backgrounds">
+    <img id="Background1" class="BackgroundOptions" src="pa.jpg"/>
+    <img id="Background2" class="BackgroundOptions" src="BackgroundOption1.jpg"/>
+    <img id="Background3" class="BackgroundOptions" src="BackgroundOption2.jpg"/>
+    <img id="Background4" class="BackgroundOptions" src="BackgroundOption3.jpg"/>
+    <img id="Background5" class="BackgroundOptions" src="BackgroundOption4.jpg"/>
+    <img id="Background6" class="BackgroundOptions" src="BackgroundOption5.jpg"/>
+</div>
+
 	<div id="menuDiv">
+		<input id='showButton' type='button' value='Backgrounds' class="button" onclick="menu()">
         <a id='menuHome' href='/' class='menuBut'>Main Page</a>
         <a id='menuGal' href="/gallery" class="menuBut">Gallery</a>
         <a id='menuFav' href="/favorite" class="menuBut">Favorite</a>
     </div>
-  </body>
-=======
-<div id='menuDiv'>
-    <a id='menuHome' href='/' class='menuBut'>Main Page</a>
-    <a id='menuGal' href='/gallery' class='menuBut'>Gallery</a>
-    <a id='menuFav' href='/favorite' class='menuBut'>Favorite</a>
-</div>
+
 
 <div id="galDiv">
 	{{{album}}}
 </div>
 
->>>>>>> 016e026b4e6d2072a123bd352023900fad488c2b
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
+<script>
+	function menu(){
+		var imgBack = document.getElementById('backgrounds');
+		if (imgBack.style.top === "-100px"){
+			imgBack.style.top = "40px";
+		} else {
+			imgBack.style.top = "-100px"
+		}
+	}
+
+
+    document.getElementById("Background1").addEventListener("click", function() {
+        $('body').css('background-image', 'url(pa.jpg)');
+    });
+    
+    document.getElementById("Background2").addEventListener("click", function() {
+        $('body').css('background-image', 'url(backgroundOption1.jpg)');
+    });
+    
+    document.getElementById("Background3").addEventListener("click", function() {
+        $('body').css('background-image', 'url(backgroundOption2.jpg)');
+    });
+    
+    document.getElementById("Background4").addEventListener("click", function() {
+        $('body').css('background-image', 'url(backgroundOption3.jpg)');
+    });
+    
+    document.getElementById("Background5").addEventListener("click", function() {
+        $('body').css('background-image', 'url(backgroundOption4.jpg)');
+    });
+    
+    document.getElementById("Background6").addEventListener("click", function() {
+        $('body').css('background-image', 'url(backgroundOption5.jpg)');
+    });
+    
+    
+    </script>
+
 </html>
 <!-- var butMain = document.getElementById('mainBut')butMain.addEventListener('mouseover', function() {butMain.style.background='rgba(0,0,0,0.7)';})butMain.addEventListener('mouseleave', function() {butMain.style.background='rgba(0,0,0,0.5)';})> -->

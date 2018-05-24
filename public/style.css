@@ -164,7 +164,7 @@ input:focus, textarea:focus, select:focus{
     width: 600px;
     height: 150px;
     margin: auto;
-    top: -25px;
+    top:100px;
     bottom: 0;
     right: 0;
     left: 0;
@@ -234,6 +234,12 @@ input:focus, textarea:focus, select:focus{
     background-size: cover;
     background-position: center;
 <<<<<<< HEAD
+<<<<<<< HEAD
+    background-attachment: fixed; 
+    top:-100px;
+    margin:0;
+=======
+<<<<<<< HEAD
     background-attachment: fixed;
     margin: 0;
 =======
@@ -241,6 +247,12 @@ input:focus, textarea:focus, select:focus{
     top:-100px;
     margin:0;
 >>>>>>> 016e026b4e6d2072a123bd352023900fad488c2b
+>>>>>>> 5f416fb2077dcc01080402f5187e631b1ca84427
+=======
+    background-attachment: fixed; 
+    top:-100px;
+    margin:0;
+>>>>>>> a22ce1bf5c9efc13b06181763587c307d4707e35
 }
 
 #formSave {
@@ -355,6 +367,11 @@ body {
     margin:0;
 }
 
+#ds {
+    width: auto;
+    font-size:64px;
+    height: 500px;
+}
 
 /*class for button*/
 .button {
@@ -489,12 +506,12 @@ img{
 }
 
 #backgrounds {
-    position:absolute;
-    top:-15%;
-    right:0%;
+    position:fixed;
+    top:-100px;
+    right:0px;
     margin:auto;
-    width:20%;
-    height:12%;
+    width:620px;
+    height:auto;
     text-align:center;
     background-color:rgba(50, 50, 50, 0.5);
     border:5px double white;
@@ -503,14 +520,10 @@ img{
 }
 
 #showButton{
-    right:8.6%;
+    right:0px;
     position:absolute;
 }
 
-#hideButton{
-    right:3.6%;
-    position:absolute;
-}
 
 #backgroundMenu {
     color:white;
@@ -527,8 +540,7 @@ img{
 
 .BackgroundOptions {
     position:relative;
-    width:31%;
-    height:40%;
-    display:inline-block;
+    width:90px;
+    height:60px;
     padding:1%;
 }
