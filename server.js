@@ -13,15 +13,21 @@ const checkPassword = require('./checkPassword.js');
 const loadImgs = require('./loadImgs.js');
 
 
+var app = express();
+
+const port = process.env.PORT || 8080;
+
+
 var MongoClient = require('mongodb').MongoClient;
-var dbCred = require("./databaseCred.js");
+
+
+var app = express();
+
 
 /** 
  * File with credentials needed to access the database and make API calls
  */
 const dbCred = require("./databaseCred.js");
-
-var app = express();
 
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -141,7 +147,7 @@ app.get('/results', (request, response) => {
      * get picture links from the query
      */
     getThumbs.getThumbnails(response.req.query.query, (errorMessage, results) => {
-        global.formatThumbs = '<br>';
+        global.formatThumbs = '<br><div id="imagesdiv">';
         /** 
          * the URLs will be encapsulated in HTML code and returned
          */
@@ -154,7 +160,10 @@ app.get('/results', (request, response) => {
                 formatThumbs += '<img class=thumbnails id=pic'+ i + '  src=' + results[i] + '><form id=favForm method=GET action=/favorite>'+
 '<button name=favorite id=favorite value=' + i + ' type=submit>❤</button></form>';
             }
-
+            formatThumbs += "</div>   <div id='greyBack'></div><script type='text/javascript'> var greyBack = document.getElementById('greyBack'), defLeft = null, defRight = null, defTop = null, defBottom = null, defMargin = null, currentDiv = null, bin = document.getElementById('bin'), previousDiv = null; function getID(e) { e = e || window.event; e = e.target || e.srcElement; if (e.className == 'thumbnails') { zoomIn(e); currentDiv = e } else if (e.id == 'greyBack') { zoomOut(currentDiv); } } function zoomIn(element) { defLeft = element.style.left, defRight = element.style.right, defTop = element.style.top, defBottom = element.style.bottom, defMargin = element.style.margin; element.style.position = 'fixed'; element.style.transform = 'scale(5)'; element.style.zIndex = '1'; element.style.left = '0px'; element.style.right = '0px'; element.style.top = '0px'; element.style.bottom = '0px'; element.style.margin = 'auto'; greyBack.style.zIndex = '0'; greyBack.style.opacity = '0.75'; } function zoomOut(element) { element.style.position = 'relative'; element.style.transform = 'scale(1)'; element.style.zIndex = '0'; element.style.left = defLeft; element.style.right = defRight; element.style.top = defTop; element.style.bottom = defBottom; element.style.margin = defMargin; greyBack.style.zIndex = '-1'; greyBack.style.opacity = '0'; } </script></html>"
+            
+            
+            
         } else {
             /** 
              * if there's no pictures returned, an error message will be displayed
@@ -192,19 +201,18 @@ app.get('/gallery', (request, response) => {
     /** 
      * the HTML code is sent to be displayed
      */
+
     loadGal.loadGal(session_user, (result) => {
 
         response.render('gallery.hbs', {
             title: 'Gallery',
             album: result
-
+        });
 
         });
 
     });
 
-
-});
 
 
 /** 
@@ -229,8 +237,6 @@ app.get('/favorite', (request, response) => {
 
 
 });
-
-
 
 /** 
  * push the server up on the port
