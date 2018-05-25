@@ -15,8 +15,6 @@ const loadImgs = require('./loadImgs.js');
 
 var app = express();
 
-const port = process.env.PORT || 8080;
-
 
 var MongoClient = require('mongodb').MongoClient;
 
