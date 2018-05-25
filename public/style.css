@@ -223,7 +223,7 @@ input:focus, textarea:focus, select:focus{
 #usern {
     position: fixed;
     top:-10px;
-    left:900px;
+    right:12%;
     float:right;
     color:white;
     font-weight: lighter;
@@ -456,6 +456,7 @@ img{
     transition: all 0.5s;
     z-index: 0;
     display: inline-block;
+    cursor: pointer;
 
 }
 
