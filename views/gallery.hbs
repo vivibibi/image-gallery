@@ -32,6 +32,9 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 
 <script>
+
+    var bgPic = Math.floor((Math.random() * 6) + 1);
+    
 	function menu(){
 		var imgBack = document.getElementById('backgrounds');
 		if (imgBack.style.top === "-100px"){
@@ -39,8 +42,23 @@
 		} else {
 			imgBack.style.top = "-100px"
 		}
-	}
-
+	};
+    
+    
+    if(bgPic == 1){
+        $('body').css('background-image', 'url(pa.jpg)');
+    } else if(bgPic == 2){
+        $('body').css('background-image', 'url(backgroundOption1.jpg)');
+    } else if(bgPic == 3){
+        $('body').css('background-image', 'url(backgroundOption2.jpg)');
+    } else if(bgPic == 4){
+        $('body').css('background-image', 'url(backgroundOption3.jpg)');
+    } else if(bgPic == 5){
+        $('body').css('background-image', 'url(backgroundOption4.jpg)');
+    } else{
+        $('body').css('background-image', 'url(backgroundOption5.jpg)');
+    };
+    
 
     document.getElementById("Background1").addEventListener("click", function() {
         $('body').css('background-image', 'url(pa.jpg)');
